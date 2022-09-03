@@ -1,0 +1,318 @@
+@import './variables.scss';
+@import './colors.scss';
+
+.title {
+  font-family: $font-family;
+  &-80 {
+    font-size: $font-size-80;
+    line-height: $line-height-88;
+    color: $primary-dark;
+    letter-spacing: $letter-spacing-30;
+  }
+  &-72 {
+    font-size: $font-size-72;
+    line-height: $line-height-72;
+  }
+  &-64 {
+    font-size: $font-size-64;
+    line-height: $line-height-64;
+    color: $primary-dark;
+    letter-spacing: $letter-spacing-30;
+  }
+  &-56 {
+    font-size: $font-size-56;
+    line-height: $line-height-64;
+    color: $primary-dark;
+    letter-spacing: $letter-spacing-30;
+  }
+  &-48 {
+    font-size: $font-size-48;
+    line-height: $line-height-48;
+    color: $primary-dark;
+  }
+  &-40 {
+    font-size: $font-size-40;
+    line-height: $line-height-42;
+    color: $primary-dark;
+    letter-spacing: $letter-spacing-30;
+  }
+  &-32 {
+    font-size: $font-size-32;
+    line-height: 43px;
+    color: $primary-dark;
+    letter-spacing: $letter-spacing-30;
+  }
+  &-24 {
+    font-size: $font-size-24;
+    line-height: $line-height-32;
+    letter-spacing: $letter-spacing-2;
+  }
+  &-19 {
+    font-size: $font-size-19;
+    line-height: $line-height-16;
+    letter-spacing: $letter-spacing-2;
+  }
+  &-16 {
+    font-size: $font-size-16;
+    line-height: $line-height-22;
+    color: $primary-dark;
+  }
+
+  &-bold {
+    font-family: "PoppinsBold";
+    font-weight: 700;
+  }
+  &-semibold {
+    font-family: "PoppinsSemiBold";
+    font-weight: 600;
+  }
+  &-medium {
+    font-family: "PoppinsMedium";
+    font-weight: 500;
+  }
+  &-semi {
+    font-weight: 500;
+  }
+  &-regular {
+    font-weight: 400;
+  }
+}
+
+.font {
+  &-32 {
+    font-size: $font-size-32;
+    line-height: $line-height-40;
+    letter-spacing: $letter-spacing-30;
+    color: $primary-dark;
+  }
+  &-24 {
+    font-size: $font-size-24;
+    line-height: 38.4px;
+    letter-spacing: $letter-spacing-2;
+    color: $primary-dark;
+  }
+  &-24-lh-32 {
+    font-size: $font-size-24;
+    line-height: $line-height-32;
+    letter-spacing: $letter-spacing-2;
+    color: $primary-dark;
+  }
+  &-20 {
+    font-size: $font-size-20;
+    line-height: $line-height-32;
+    letter-spacing: $letter-spacing-40;
+    color: $primary-dark;
+  }
+  &-19 {
+    font-size: $font-size-19;
+    line-height: $line-height-24;
+    letter-spacing: $letter-spacing-40;
+    color: $primary-dark;
+  }
+  &-17 {
+    font-size: $font-size-17;
+    line-height: $line-height-24;
+    letter-spacing: $letter-spacing-28;
+    color: $primary-dark;
+  }
+  &-16 {
+    font-size: $font-size-16;
+    line-height: $line-height-16;
+    letter-spacing: $letter-spacing-28;
+    color: $primary-dark
+  }
+  &-15 {
+    font-size: $font-size-15;
+    line-height: $line-height-22;
+    letter-spacing: $letter-spacing-28;
+    color: $primary-dark;
+  }
+  &-14 {
+    font-size: $font-size-14;
+    line-height: $line-height-14;
+    letter-spacing: $letter-spacing-40;
+    color: $primary-dark;
+  }
+  &-14-lh-17 {
+    font-size: $font-size-14;
+    line-height: $line-height-17;
+    letter-spacing: $letter-spacing-40;
+    color: $primary-dark;
+  }
+  &-13 {
+    font-size: $font-size-13;
+    line-height: $line-height-20;
+    letter-spacing: $letter-spacing-25;
+    color: $primary-dark;
+  }
+  &-11 { 
+    font-size: $font-size-11;
+    line-height: $line-height-20;
+    letter-spacing: $letter-spacing-25;
+    color: $primary-dark;
+  }
+  &-11-lh-16 { 
+    font-size: $font-size-11;
+    line-height: $line-height-16;
+    letter-spacing: $letter-spacing-25;
+    color: $primary-dark;
+  }
+  &-11-lh-14 { 
+    font-size: $font-size-11;
+    line-height: $line-height-16;
+    letter-spacing: $letter-spacing-25;
+    color: $primary-dark;
+  }
+  &-9 { 
+    font-size: $font-size-9;
+    line-height: $line-height-14;
+    letter-spacing: $letter-spacing-25;
+    color: $primary-dark;
+  }
+  &-8 { 
+    font-size: $font-size-8;
+    line-height: $line-height-12;
+    letter-spacing: $letter-spacing-25;
+    color: $primary-dark;
+  }
+  &-bold {
+    font-family: "PoppinsBold";
+    font-weight: 600;
+  }
+  &-semibold {
+    font-family: "PoppinsSemiBold";
+    font-weight: 600;
+  }
+  &-medium {
+    font-family: "PoppinsMedium";
+    font-weight: 500;
+  }
+  &-regular {
+    font-family: "PoppinsRegular";
+    font-weight: 400;
+  }
+  &-normal {
+    font-family: "PoppinsRegular";
+    font-weight: 400;
+  }
+}
+.caption {
+  &-regular {
+    font-family: "PoppinsRegular";
+    font-size: 12px;
+    line-height: 150%;
+  }
+  &-medium {
+    font-family: "PoppinsMedium";
+    font-size: 12px;
+    line-height: 150%;
+  }
+  &-bold {
+    font-family: "PoppinsRegular";
+    font-size: 12px;
+    line-height: 150%;
+  }
+}
+
+// alignment
+.text-left {
+  text-align: left;
+}
+
+// size
+.text-smallest {
+  font-size: 0.7rem;
+}
+.text-smaller {
+  font-size: 0.8rem;
+}
+.text-small {
+  font-size: 0.9rem;
+}
+.text-normal {
+  font-size: 1rem;
+}
+.text-title {
+  font-size: 1.5rem;
+}
+
+// colors
+.text-black {
+  color: $black;
+}
+.text-white {
+  color: $white;
+}
+
+.text-error {
+  color: $declined;
+}
+.text-primary {
+  color: $primary-dark;
+}
+.text-main {
+  color: $primary-main;
+}
+.text-secondary {
+  color: $grey;
+}
+.text-success {
+  color: $confirmed;
+}
+
+.text-strikeoff {
+  text-decoration: line-through;
+}
+.text-bold {
+  font-weight: 600;
+}
+.text-medium {
+  font-weight: 500;
+}
+.font {
+  &-12 {
+    &-lh {
+      &-24 {
+        font-style: normal;
+        font-size: 12px;
+        line-height: 24px;
+      }
+    }
+  }
+  &-light {
+    font-family: 'PoppinsLight';
+  }
+  &-regular {
+    font-family: 'PoppinsRegular';
+  }
+  &-medium {
+    font-family: 'PoppinsMedium';
+  }
+  &-semi-bold {
+    font-family: 'PoppinsSemiBold';
+  }
+  &-bold {
+    font-family: 'PoppinsBold';
+  }
+  &-extra-bold {
+    font-family: 'PoppinsExtraBold';
+  }
+
+  &-w-bold {
+    font-weight: bold;
+  }
+  &-secondary {
+    color: $primary-main-text;
+  }
+}
+.text {
+  &-left {
+    text-align: left;
+  }
+  &-right {
+    text-align: right;
+  }
+  &-center {
+    text-align: center;
+  }
+}

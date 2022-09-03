@@ -1,0 +1,16 @@
+.disable-drag {
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+  }
+.common-divider {
+  margin: 0 auto;
+  background-image: url(@/assets/icons/icon-linebreak.svg);
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: contain;
+  border: none!important;
+  height: 20px;
+  width: 74.4px;
+}
