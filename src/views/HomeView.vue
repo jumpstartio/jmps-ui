@@ -4,6 +4,9 @@ import LandingBanner from "@/components/home/LandingBanner.vue";
 import MentorsShowcase from "@/components/home/MentorsShowcase.vue";
 import ContactBanner from "@/components/home/ContactBanner.vue";
 import FeatureBanner from "@/components/home/FeatureBanner.vue";
+import HowItWorks from "@/components/home/HowItWorks.vue";
+import FeedbackSection from "@/components/home/FeedbackSection.vue";
+
 
 const showElements = (event) => {
   if (event.target.scrollTop >= 50) {
@@ -22,7 +25,12 @@ const showElements = (event) => {
   <div class="home-wrapper" @scroll="showElements($event)">
     <LandingBanner class="home-banner" />
     <FeatureBanner class="feature-banner" />
+    <div class="line-divider" />
+    <HowItWorks id="h-i-w-container" class="how-it-works" />
+    <div class="line-divider" />
     <mentors-showcase id="m-s-container" class="mentor-showcase" />
+    <div class="line-divider" />
+    <FeedbackSection />
     <ContactBanner class="contact" />
     <JmpsFooter class="footer" />
   </div>
@@ -30,6 +38,7 @@ const showElements = (event) => {
 
 <style lang="scss" scoped>
 @import "@/styles/library/fonts.scss";
+@import "@/styles/library/utils.scss";
 
 .home-wrapper {
   display: flex;

@@ -45,48 +45,33 @@ import ContactCard from "@/components/ui/ContactCard.vue";
 @import "@/styles/library/colors.scss";
 .contact-banner-wrapper {
   display: flex;
-  flex-direction: column;
   width: 100%;
+  background: $banner-background-light;
+  display: flex;
+  align-items: center;
+  align-items: center;
+  justify-content: space-between;
   &-handout {
-    display: flex;
-    min-height: 258px;
-    background: $banner-background-light;
-    align-items: center;
-    width: 100%;
     &-container {
+      padding-bottom: 32px;
       display: flex;
-      align-items: center;
-      padding: auto;
-      position: relative;
-      margin-right: auto;
-      margin-left: auto;
-      &-brand {
+      flex-direction: column;
+      align-items: flex-start;
+      padding-left: 180px;
+      &-details {
         display: flex;
         flex-direction: column;
-        width: 100%;
-      }
-      &-details {
-        margin-left: 80px;
-        gap: 120px;
-        width: 100%;
-        display: flex;
-        flex-direction: row;
+        gap: 16px;
       }
     }
   }
   &-doubt {
     display: flex;
-    min-height: 180px;
-    background-color: $banner-background-dark;
-    align-items: center;
-    padding: auto;
     &-container {
-      align-items: center;
       display: flex;
-      position: relative;
-      margin-right: auto;
-      margin-left: auto;
-      gap: 500px;
+      flex-direction: column;
+      align-items: flex-end;
+      padding-right: 180px;
     }
   }
   .card {

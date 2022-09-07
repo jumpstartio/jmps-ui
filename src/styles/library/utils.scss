@@ -1,3 +1,5 @@
+@import './colors.scss';
+
 .disable-drag {
     -webkit-user-drag: none;
     -khtml-user-drag: none;
@@ -13,4 +15,9 @@
   border: none!important;
   height: 20px;
   width: 74.4px;
+}
+.line-divider {
+  margin: 16px auto;
+  border: 1px solid $border-color;
+  width: 90%;
 }

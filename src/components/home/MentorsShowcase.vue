@@ -132,7 +132,7 @@ export default {
 
 .showcase-wrapper {
   display: flex;
-  height: 100%;
+  height: max-content;
   width: 100%;
   &-text-container {
     margin: 162px 0 0 90px;
