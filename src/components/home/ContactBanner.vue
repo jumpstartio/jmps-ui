@@ -78,4 +78,27 @@ import ContactCard from "@/components/ui/ContactCard.vue";
     width: 320px;
   }
 }
+@media only screen and (max-width: 600px) {
+  .contact-banner-wrapper {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    padding-bottom: 40px;
+    &-handout {
+      &-container {
+        padding-bottom: 32px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding-left: 0;
+      }
+    }
+    &-doubt {
+      display: flex;
+      &-container {
+        padding-right: 0;
+      }
+    }
+  }
+}
 </style>

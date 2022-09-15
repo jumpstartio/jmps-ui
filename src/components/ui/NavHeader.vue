@@ -1,6 +1,10 @@
 <script setup>
 import { RouterLink } from "vue-router";
-import JmpsButton from "./JmpsButton.vue";
+import JmpsButton from "@/components/ui/JmpsButton.vue";
+import JmpsInput from "@/components/ui/JmpsInput.vue";
+import DropdownMenu from "@/components/ui/DropdownMenu.vue";
+import NavDropDownCard from "@/components/ui/NavDropDownCard.vue";
+
 defineProps({
   msg: {
     type: String,
@@ -16,10 +20,39 @@ defineProps({
 
 <template>
   <div class="header-wrapper">
-    <div class="header-wrapper-brand title-24 font-bold">
-      <RouterLink to="/">
-        <img src="@/assets/logo.svg" alt="" srcset="" />
-      </RouterLink>
+    <div class="header-wrapper-navitems">
+      <div class="header-wrapper-brand">
+        <RouterLink to="/">
+          <img src="@/assets/logo.svg" alt="" srcset="" />
+        </RouterLink>
+      </div>
+      <div class="header-wrapper-navitems separate">
+        <dropdown-menu :right="false" :interactive="true" :hover="true">
+          <div class="loggedin-user-dropdown-container">
+            <RouterLink to="/programs" class="item">
+              Programs
+              <img src="@/assets/icons/icon-caret-down.svg" />
+            </RouterLink>
+          </div>
+          <template #dropdown>
+            <NavDropDownCard :showChild="true" />
+          </template>
+        </dropdown-menu>
+
+        <div>
+          <dropdown-menu :right="false" :interactive="true" :hover="true">
+            <div class="loggedin-user-dropdown-container">
+              <RouterLink to="/resources" class="item">
+                Resources
+                <img src="@/assets/icons/icon-caret-down.svg" />
+              </RouterLink>
+            </div>
+            <template #dropdown>
+              <NavDropDownCard :showChild="false" />
+            </template>
+          </dropdown-menu>
+        </div>
+      </div>
     </div>
     <div class="header-wrapper-navitems font-15 font-regular">
       <img
@@ -27,28 +60,34 @@ defineProps({
         alt="menu"
         class="hamburger"
       />
-      <RouterLink to="/interviewers" class="item">
-        Find an Interviewer
+      <RouterLink to="/authenticate/login" class="item">
+        <JmpsButton
+          v-if="!userSignedIn"
+          :type="'primary'"
+          class="item"
+          @button-clicked="login"
+        >
+          Log in
+        </JmpsButton>
       </RouterLink>
-      <RouterLink to="/courses" class="item"> Courses </RouterLink>
-      <RouterLink to="/blogs" class="item"> Blog </RouterLink>
-      <JmpsButton
-        v-if="!userSignedIn"
-        :type="'primary'"
-        class="item"
-        @button-clicked="login"
-      >
-        Log in
-      </JmpsButton>
-      <JmpsButton
-        v-if="!userSignedIn"
-        :type="'subtle'"
-        class="item"
-        @button-clicked="signup"
-      >
-        Send Feedback
-      </JmpsButton>
-      <logged-in-user-drop-down v-if="userSignedIn" />
+      <dropdown-menu :right="true" :interactive="true" :hover="true">
+        <JmpsButton
+          v-if="!userSignedIn"
+          :type="'subtle'"
+          class="item"
+          @button-clicked="signup"
+        >
+          Send Feedback
+        </JmpsButton>
+        <template #dropdown>
+          <div class="feedback-section">
+            <textarea
+              class="feedback-section-input font-14 text-regular"
+              placeholder="Write your feedback and press enter to send."
+            />
+          </div>
+        </template>
+      </dropdown-menu>
     </div>
   </div>
 </template>
@@ -56,6 +95,7 @@ defineProps({
 <style lang="scss" scoped>
 @import "@/styles/library/colors.scss";
 @import "@/styles/library/icons.scss";
+@import "@/styles/library/variables.scss";
 .header-wrapper {
   display: flex;
   align-items: center;
@@ -86,7 +126,27 @@ defineProps({
     display: none;
   }
   .item {
-    display: block;
+    display: flex;
+    align-items: center;
+  }
+  .separate {
+    margin-left: 80px;
+  }
+}
+.feedback-section {
+  &-input {
+    margin: 10px 0;
+    border: none;
+    width: 100%;
+    border-radius: 8px;
+    height: 150px;
+    font-size: 16px;
+    font-family: $font-family;
+  }
+  ::placeholder {
+    font-family: $font-family;
+    font-size: 14px;
+    letter-spacing: 1px;
   }
 }
 @media only screen and (max-width: 961px) {

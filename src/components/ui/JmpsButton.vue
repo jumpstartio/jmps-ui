@@ -107,7 +107,7 @@ export default {
       } else if (props.suffixIcon) {
         return `src/assets/icons/${props.suffixIcon}.svg`;
       } else if (props.prefixIcon) {
-        return `src/assets/icons/${props.prefixIcon}.svg`;
+        return `/src/assets/icons/${props.prefixIcon}.svg`;
       } else if (props.type === "back") {
         return "src/assets/icons/icon-arrow-left.svg";
       }
@@ -140,7 +140,7 @@ export default {
   box-sizing: border-box;
   font-family: "PoppinsMedium";
   font-size: $font-size-14;
-  max-width: 350px;
+  max-width: 400px;
 
   &-icon {
     &-prefix {

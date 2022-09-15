@@ -3,7 +3,7 @@
     <div class="feedback-section">
       <div class="feedback-section-info">
         <div class="title title-40 title-semibold">
-          Hear it from the people who made it. 💪
+          Hear it from the people who made it.
         </div>
         <div class="description font-16 font-regular text-secondary">
           Our community is a mix of students, professionals, and industry
@@ -106,7 +106,7 @@ export default {
         color: white;
       }
       &-video {
-        width: 100%;
+        display: none;
       }
       .feedback-section-video:not(:first-child) {
         display: none;

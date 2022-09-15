@@ -1,18 +1,11 @@
 <template>
   <div class="info-wrapper" tabindex="0">
-    <div class="image-container">
-      <img
-        src="@/assets/illustrations/illustration-howitworks.svg"
-        class="image-container-image"
-        alt=""
-      />
-    </div>
     <div class="steps-container">
       <div class="steps-container-title title-40 title-semibold">
         Remove the guesswork. Connect with engineers from your <span class="text-main">dream company</span>.
       </div>
-      <div class="common-divider steps-container-divider" />
-      <p class="text-medium steps-container-description">
+      <!-- <div class="common-divider steps-container-divider" /> -->
+      <p class="text-medium steps-container-description text-secondary font-16">
         No more firing shots in the air. Solve problems in a hand crafted order
         to get most out every problem you solve.
       </p>
@@ -25,6 +18,13 @@
           />
         </div>
       </div>
+    </div>
+    <div class="image-container">
+      <img
+        src="@/assets/illustrations/illustration-howitworks.svg"
+        class="image-container-image"
+        alt=""
+      />
     </div>
   </div>
 </template>
@@ -51,14 +51,12 @@ export default {
 
 .info-wrapper {
   display: flex;
-  flex-direction: row-reverse;
   height: max-content;
-  padding: 16px 24px 8px 80px;
   margin: 0 auto;
   align-content: space-between;
   align-items: center;
   box-sizing: border-box;
-  width: 100%;
+  width: 1240px;
   gap: 64px;
   .image-container {
     border-radius: 8px;
@@ -89,9 +87,11 @@ export default {
 @media only screen and (max-width: 600px) {
   .info-wrapper {
     display: flex;
-    flex-direction: column-reverse;
-    height: 100%;
-    margin-left: 0;
+    flex-direction: column;
+    height: max-content;
+    margin: 0;
+    padding: 0 8px;
+    width: 350px;
     .image-container {
       width: 340px;
       margin-top: 22px;

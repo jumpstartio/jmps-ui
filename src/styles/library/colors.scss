@@ -33,6 +33,15 @@ $dark-background: #181818;
 $banner-gradiant: linear-gradient(rgba(251, 251, 255, 0) 79.36%, rgb(244, 244, 253));
 $banner-background-light: #EDEBF9;
 $banner-background-dark:#A59CE3;
+$background-input: #F8F8F8;
+$brand-color: #FF5F3C;
+$border-input-focus: #FF5F3C;
+$border-input-shadow: #FFE1DC;
+$declined-input-shadow: rgba(237, 47, 41, 0.3);
+$brand-color-selected-text: #FFE1D6;
+$desc-input: #767477;
+$highlight-text-desc: #FFE1D6;
+
 :export {
   primaryMain: $primary-main;
   primaryDark: $primary-dark;

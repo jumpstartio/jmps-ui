@@ -7,22 +7,22 @@ import FeatureBanner from "@/components/home/FeatureBanner.vue";
 import HowItWorks from "@/components/home/HowItWorks.vue";
 import FeedbackSection from "@/components/home/FeedbackSection.vue";
 
-
-const showElements = (event) => {
-  if (event.target.scrollTop >= 50) {
-    document.getElementById("m-s-container").style.opacity = 1;
-  }
-  if (event.target.scrollTop >= 600) {
-    document.getElementById("h-i-w-container").style.opacity = 1;
-  }
-  if (event.target.scrollTop >= 1100) {
-    document.getElementById("f-b-s-container").style.opacity = 1;
-  }
-};
+// const showElements = (event) => {
+//   if (event.target.scrollTop >= 50) {
+//     document.getElementById("m-s-container").style.opacity = 1;
+//   }
+//   if (event.target.scrollTop >= 600) {
+//     document.getElementById("h-i-w-container").style.opacity = 1;
+//   }
+//   if (event.target.scrollTop >= 1100) {
+//     document.getElementById("f-b-s-container").style.opacity = 1;
+//   }
+// };
 </script>
 
 <template>
-  <div class="home-wrapper" @scroll="showElements($event)">
+  <!-- <div class="home-wrapper" @scroll="showElements($event)"> -->
+  <div class="home-wrapper">
     <LandingBanner class="home-banner" />
     <FeatureBanner class="feature-banner" />
     <div class="line-divider" />
@@ -57,19 +57,20 @@ const showElements = (event) => {
     background-color: white;
   }
   .mentor-showcase {
-    opacity: 0;
-    transition: opacity 3s;
+    // opacity: 0;
+    // transition: opacity 3s;
   }
   .how-it-works {
-    opacity: 0;
-    transition: opacity 2s;
+    // opacity: 0;
+    // transition: opacity 2s;
+    margin: 60px 0;
   }
   .feed-back-section {
     opacity: 0;
     transition: opacity 3s;
   }
-  .contact {
-    margin-top: 60px;
+  .feature-banner {
+    padding: 20px 0 60px 0;
   }
 }
 :deep() {
@@ -79,8 +80,12 @@ const showElements = (event) => {
   }
 }
 @media only screen and (max-width: 600px) {
-  .how-it-works {
-    margin-top: 32px;
+  .home-wrapper {
+    max-width: 100%;
+    overflow-x: hidden;
+    .how-it-works {
+      margin-top: 32px;
+    }
   }
 }
 </style>

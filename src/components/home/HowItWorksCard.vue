@@ -1,6 +1,6 @@
 <template>
   <div class="card-wrapper" tabindex="0">
-    <div class="card-wrapper-number title-24 title-bold">{{ index }}</div>
+    <div class="card-wrapper-number title-24 title-semibold">{{ index }}</div>
     <div class="card-wrapper-info-container">
       <div class="card-wrapper-info-container-title">
         {{ title }}
@@ -43,12 +43,12 @@ export default {
   min-height: 80px;
   width: 720px;
   &-number {
-    margin-top: 24px;
+    margin-top: 12px;
     margin-left: 16px;
   }
   &-info-container {
     display: flex;
-    padding: 24px;
+    padding: 12px 24px;
     flex-direction: column;
     &-title {
       font-size: 19px;
@@ -56,31 +56,13 @@ export default {
     }
     &-description {
       margin-top: 12px;
+      font-size: 16px;
+      font-weight: 400;
     }
   }
   &:hover {
-    background-color: $primary-main;
-    color: $white;
+    background-color: $banner-background-light;
     cursor: default;
-    :deep() {
-      color: $white;
-    }
-  }
-  &:active {
-    background-color: $primary-main;
-    color: $white;
-    cursor: default;
-    :deep() {
-      color: $white;
-    }
-  }
-  &:focus {
-    background-color: $primary-main;
-    color: $white;
-    cursor: default;
-    :deep() {
-      color: $white;
-    }
   }
 }
 @media only screen and (max-width: 600px) {
@@ -102,29 +84,9 @@ export default {
         line-height: 22.4px;
       }
     }
-    &:focus {
-      background-color: $primary-main;
-      color: $white;
-      cursor: default;
-      :deep() {
-        color: $white;
-      }
-    }
     &:hover {
-      background-color: $primary-main;
-      color: $white;
+      background-color: none;
       cursor: default;
-      :deep() {
-        color: $white;
-      }
-    }
-    &:active {
-      background-color: $primary-main;
-      color: $white;
-      cursor: default;
-      :deep() {
-        color: $white;
-      }
     }
   }
 }

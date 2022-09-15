@@ -16,25 +16,48 @@ defineProps({
 </script>
 <template>
   <div class="process-item-container">
-    <img :src="`src/assets/icons/${icon}.svg`" alt="" class="process-icon" />
-    <p class="font-16 font-medium">{{ title }}</p>
-    <p class="font-14">{{ details }}</p>
+    <div class="icon-container">
+      <img
+        :src="`src/assets/illustrations/${icon}.png`"
+        alt=""
+        class="process-icon"
+      />
+    </div>
+    <p class="title-19 title-medium process-item-container-title">
+      {{ title }}
+    </p>
+    <p class="font-16 process-item-container-description text-secondary">
+      {{ details }}
+    </p>
   </div>
 </template>
 
 <style lang="scss" scoped>
 @import "@/styles/library/colors.scss";
+@import "@/styles/library/fonts.scss";
 .process-item-container {
   box-sizing: border-box;
   padding: 20px 40px;
   display: flex;
   flex-direction: column;
   max-width: 450px;
-  text-align: justify;
+  text-align: left;
+  &-title {
+    margin: 6px 0;
+    text-align: center;
+  }
+  &-description {
+    margin: 6px 0;
+    text-align: center;
+  }
+}
+.icon-container {
+  display: flex;
+  margin: auto;
 }
 .process-icon {
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 3rem;
+  height: 3rem;
   max-width: none;
   margin-bottom: 0;
   border-radius: 0;

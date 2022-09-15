@@ -1,7 +1,9 @@
 <template>
   <div class="showcase-wrapper">
     <div class="showcase-wrapper-text-container">
-      <p class="headline title-40 title-semibold">{{ title }}</p>
+      <p class="headline title-40 title-semibold">
+        Meet the <span class="text-main">best mentors</span> in tech
+      </p>
       <div class="description font-16 font-regular">{{ description }}</div>
       <div class="actions">
         <JmpsButton
@@ -57,7 +59,7 @@ export default {
   props: {
     title: {
       type: String,
-      default: "Get interviewed by the best in Industry",
+      default: "Meet the best mentors in Tech",
     },
     description: {
       type: String,
@@ -134,8 +136,9 @@ export default {
   display: flex;
   height: max-content;
   width: 100%;
+  padding: 8px 0 16px 0;
   &-text-container {
-    margin: 162px 0 0 90px;
+    margin: 12px 0 0 90px;
     max-width: 462px;
     display: flex;
     flex-direction: column;
@@ -155,7 +158,7 @@ export default {
   }
   &-cards-container {
     display: flex;
-    margin-top: 169px;
+    margin-top: 19px;
     margin-left: 35px;
     margin-right: 16px;
     gap: 20px;
@@ -171,7 +174,7 @@ export default {
 @media only screen and (max-width: 600px) {
   .showcase-wrapper {
     width: 100%;
-    height: 100%;
+    height: max-content;
     display: flex;
     flex-direction: column;
     &-text-container {
