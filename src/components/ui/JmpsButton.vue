@@ -84,6 +84,10 @@ export default {
       type: String,
       default: "px",
     },
+    imageExtension: {
+      type: String,
+      default: "svg",
+    },
   },
   setup(props, { emit }) {
     const buttonStyle = computed(() => {
@@ -103,11 +107,11 @@ export default {
     );
     const iconUrl = computed(() => {
       if (props.icon) {
-        return `src/assets/icons/${props.icon}.svg`;
+        return `src/assets/icons/${props.icon}.${props.imageExtension}`;
       } else if (props.suffixIcon) {
-        return `src/assets/icons/${props.suffixIcon}.svg`;
+        return `src/assets/icons/${props.suffixIcon}.${props.imageExtension}`;
       } else if (props.prefixIcon) {
-        return `/src/assets/icons/${props.prefixIcon}.svg`;
+        return `/src/assets/icons/${props.prefixIcon}.${props.imageExtension}`;
       } else if (props.type === "back") {
         return "src/assets/icons/icon-arrow-left.svg";
       }

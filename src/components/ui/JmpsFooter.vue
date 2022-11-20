@@ -19,7 +19,9 @@
     <div class="footer-wrapper-action">
       <ul>
         <li>Find Interviewer</li>
-        <li>Become Interviewer</li>
+        <RouterLink to="/join-jumpstart">
+          <li>Become Interviewer</li>
+        </RouterLink>
         <li>FAQ</li>
       </ul>
       <ul class="font-14">
@@ -108,6 +110,9 @@ export default {
       list-style-type: none;
       gap: 40px;
       padding: 0;
+      a {
+        text-decoration: none;
+      }
       &:last-child {
         text-align: right;
       }

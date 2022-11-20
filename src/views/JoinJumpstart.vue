@@ -1,46 +1,29 @@
 <script setup>
 import JmpsFooter from "@/components/ui/JmpsFooter.vue";
 import LandingBanner from "@/components/home/LandingBanner.vue";
-import MentorsShowcase from "@/components/home/MentorsShowcase.vue";
 import ContactBanner from "@/components/home/ContactBanner.vue";
-import FeatureBanner from "@/components/home/FeatureBanner.vue";
-import HowItWorks from "@/components/home/HowItWorks.vue";
-import FeedbackSection from "@/components/home/FeedbackSection.vue";
 import FaqSection from "@/components/home/FaqSection.vue";
-
-const scrollToContactBanner = () => {
-  document.getElementById("contact").scrollIntoView();
-};
-// const showElements = (event) => {
-//   if (event.target.scrollTop >= 50) {
-//     document.getElementById("m-s-container").style.opacity = 1;
-//   }
-//   if (event.target.scrollTop >= 600) {
-//     document.getElementById("h-i-w-container").style.opacity = 1;
-//   }
-//   if (event.target.scrollTop >= 1100) {
-//     document.getElementById("f-b-s-container").style.opacity = 1;
-//   }
-// };
+import UserNameSigner from "@/components/home/UserNameSigner.vue";
 </script>
 
 <template>
   <!-- <div class="home-wrapper" @scroll="showElements($event)"> -->
   <div class="home-wrapper">
-    <LandingBanner class="home-banner">
+    <LandingBanner
+      class="home-banner"
+      :description="'Get 1:1 sessions bookings with your network. Guide them, mentor them, help them change their lives. It\'s more satisfying than you think. And it takes 2 minutes to get started'"
+      :bannerImage="'src/assets/images/interviewer-dummy.svg'"
+      :width="624"
+      :height="620"
+      :buttonText="'Get Started for free →'"
+    >
       <p>
-        Get
-        <span class="text-main">really</span>
-        good at Sofwtare engineering interviews
+        Share your
+        <span class="text-main">knowledge</span>
+        with your network.
       </p>
     </LandingBanner>
-    <FeatureBanner class="feature-banner" />
-    <div class="line-divider" />
-    <HowItWorks id="h-i-w-container" class="how-it-works" />
-    <div class="line-divider" />
-    <mentors-showcase id="m-s-container" class="mentor-showcase" />
-    <div class="line-divider" />
-    <FeedbackSection />
+    <UserNameSigner />
     <FaqSection @scroll-to-action="scrollToContactBanner" />
     <ContactBanner class="contact" id="contact" />
     <JmpsFooter class="footer" />

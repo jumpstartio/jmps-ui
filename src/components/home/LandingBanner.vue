@@ -1,15 +1,11 @@
 <template>
-  <div class="banner-wrapper">
+  <div class="banner-wrapper" :style="`min-hight: ${pageHeight}`">
     <div class="banner-wrapper-content">
       <div class="banner-wrapper-content-text-container">
         <div
           class="banner-wrapper-content-text-container-title title-48 title-bold"
         >
-          <p>
-            Get
-            <span class="text-main">really</span>
-            good at Sofwtare engineering interviews
-          </p>
+          <slot></slot>
         </div>
         <div
           class="banner-wrapper-content-text-container-description font-20 font-medium"
@@ -20,14 +16,17 @@
           class="banner-wrapper-content-text-container-cta"
           :type="'primary'"
           :size="'medium'"
-          :height="50"
-          :width="180"
+          :height="buttonHeight"
+          :width="buttonWidth"
         >
-          Get Started →
+          {{ buttonText }}
         </JmpsButton>
       </div>
-      <div class="banner-wrapper-content-illustration">
-        <img src="@/assets/illustrations/illustration-home.svg" alt="" />
+      <div
+        class="banner-wrapper-content-illustration"
+        :style="`width: ${width}${unit};height: ${height}${unit}`"
+      >
+        <img :src="bannerImage" alt="" />
       </div>
     </div>
   </div>
@@ -47,6 +46,38 @@ export default {
       default:
         "Get interview ready through 1-on-1 mentoring sessions with engineers from top product companies",
     },
+    bannerImage: {
+      type: String,
+      default: "src/assets/illustrations/illustration-home.svg",
+    },
+    height: {
+      type: Number,
+      default: 454,
+    },
+    width: {
+      type: Number,
+      default: 454,
+    },
+    unit: {
+      type: String,
+      default: "px",
+    },
+    pageHeight: {
+      type: String,
+      default: "552px",
+    },
+    buttonText: {
+      type: String,
+      default: "Get Started →",
+    },
+    buttonWidth: {
+      type: Number,
+      default: 250,
+    },
+    buttonHeight: {
+      type: Number,
+      default: 60,
+    }
   },
   components: { JmpsButton },
 };
@@ -58,7 +89,6 @@ export default {
   display: flex;
   justify-content: space-between;
   width: 100%;
-  min-height: 552px;
   max-height: 100%;
   background: $banner-gradiant;
   &-content {
@@ -133,8 +163,6 @@ export default {
     &-illustration {
       padding: 0 80px;
       margin: 80px 190px 0 0px;
-      width: 445px;
-      height: 445px;
     }
   }
 }
