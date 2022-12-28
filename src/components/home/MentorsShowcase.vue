@@ -138,7 +138,7 @@ export default {
   width: 100%;
   padding: 8px 0 16px 0;
   &-text-container {
-    margin: 12px 0 0 90px;
+    margin: 12px 0 0 0px;
     max-width: 462px;
     display: flex;
     flex-direction: column;

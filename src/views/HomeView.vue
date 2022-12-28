@@ -7,27 +7,20 @@ import FeatureBanner from "@/components/home/FeatureBanner.vue";
 import HowItWorks from "@/components/home/HowItWorks.vue";
 import FeedbackSection from "@/components/home/FeedbackSection.vue";
 import FaqSection from "@/components/home/FaqSection.vue";
+import { fansFaqs } from "@/constants/home";
 
 const scrollToContactBanner = () => {
   document.getElementById("contact").scrollIntoView();
 };
-// const showElements = (event) => {
-//   if (event.target.scrollTop >= 50) {
-//     document.getElementById("m-s-container").style.opacity = 1;
-//   }
-//   if (event.target.scrollTop >= 600) {
-//     document.getElementById("h-i-w-container").style.opacity = 1;
-//   }
-//   if (event.target.scrollTop >= 1100) {
-//     document.getElementById("f-b-s-container").style.opacity = 1;
-//   }
-// };
 </script>
 
 <template>
   <!-- <div class="home-wrapper" @scroll="showElements($event)"> -->
   <div class="home-wrapper">
-    <LandingBanner class="home-banner">
+    <LandingBanner
+      class="home-banner"
+      :bannerImage="'src/assets/images/success.webp'"
+    >
       <p>
         Get
         <span class="text-main">really</span>
@@ -41,7 +34,7 @@ const scrollToContactBanner = () => {
     <mentors-showcase id="m-s-container" class="mentor-showcase" />
     <div class="line-divider" />
     <FeedbackSection />
-    <FaqSection @scroll-to-action="scrollToContactBanner" />
+    <FaqSection :faqs="fansFaqs" @scroll-to-action="scrollToContactBanner" />
     <ContactBanner class="contact" id="contact" />
     <JmpsFooter class="footer" />
   </div>
@@ -70,6 +63,7 @@ const scrollToContactBanner = () => {
   .mentor-showcase {
     // opacity: 0;
     // transition: opacity 3s;
+    max-width: 1440px;
   }
   .how-it-works {
     // opacity: 0;

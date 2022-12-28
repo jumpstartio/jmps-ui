@@ -4,6 +4,8 @@ import LandingBanner from "@/components/home/LandingBanner.vue";
 import ContactBanner from "@/components/home/ContactBanner.vue";
 import FaqSection from "@/components/home/FaqSection.vue";
 import UserNameSigner from "@/components/home/UserNameSigner.vue";
+import JoinerBanner from "@/components/mentor-joiner/JoinerBanner.vue";
+import { faqs } from "@/constants/home";
 </script>
 
 <template>
@@ -12,9 +14,9 @@ import UserNameSigner from "@/components/home/UserNameSigner.vue";
     <LandingBanner
       class="home-banner"
       :description="'Get 1:1 sessions bookings with your network. Guide them, mentor them, help them change their lives. It\'s more satisfying than you think. And it takes 2 minutes to get started'"
-      :bannerImage="'src/assets/images/interviewer-dummy.svg'"
+      :bannerImage="'src/assets/images/content-creator.webp'"
       :width="624"
-      :height="620"
+      :height="720"
       :buttonText="'Get Started for free →'"
     >
       <p>
@@ -24,7 +26,8 @@ import UserNameSigner from "@/components/home/UserNameSigner.vue";
       </p>
     </LandingBanner>
     <UserNameSigner />
-    <FaqSection @scroll-to-action="scrollToContactBanner" />
+    <JoinerBanner />
+    <FaqSection :faqs="faqs" @scroll-to-action="scrollToContactBanner" />
     <ContactBanner class="contact" id="contact" />
     <JmpsFooter class="footer" />
   </div>

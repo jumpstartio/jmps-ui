@@ -161,7 +161,7 @@ defineProps({
 }
 @media only screen and (min-width: 1600px) {
   .header-wrapper {
-    padding: 0 178px;
+    padding: 0 13%;
   }
 }
 </style>

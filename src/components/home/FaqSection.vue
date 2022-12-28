@@ -20,8 +20,14 @@
 
 <script setup>
 import FaqAccordian from "@/components/ui/FaqAccordian.vue";
-import { faqs } from "@/constants/home";
 const emit = defineEmits(["scroll-to-action"]);
+defineProps({
+  faqs: {
+    type: Array,
+    required: true,
+    default: null,
+  },
+})
 const scrollToAction = () => {
   emit("scroll-to-action");
 };

@@ -89,15 +89,21 @@ export default {
   display: flex;
   justify-content: space-between;
   width: 100%;
-  max-height: 100%;
+  padding-top: 72px;
   background: $banner-gradiant;
   &-content {
-    max-width: 1340px;
+    max-width: 1440px;
     display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 auto;
+    height: 100%;
+    gap: 90px;
     &-text-container {
-      padding: 129px 0 0 120px;
       display: flex;
       flex-direction: column;
+      max-width: 703px;
       &-description {
         max-width: 703px;
       }
@@ -106,8 +112,9 @@ export default {
       }
     }
     &-illustration {
-      margin: 80px 0px 0 0px;
-      transform: scale(1.1);
+      display: flex;
+      align-items: center;
+      // transform: scale(1.1);
     }
   }
 }

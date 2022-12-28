@@ -17,7 +17,7 @@
             :borderRadius="'40px'"
             :border="'2px solid #141414;'"
             :height="'48px'"
-            :outline="'3px solid rgba(20, 20, 20, 0.14)'"
+            :outline="'3px solid rgb(62,24,207, 0.14)'"
             :slotname="'default'"
             :inputBoxPadding="'160px'"
           >
@@ -36,7 +36,7 @@
       </div>
       <div class="signer-wrapper-container-faqs">
         <img
-          src="@/assets/illustrations/illustration-mentors.svg"
+          src="@/assets/images/hero.png"
           class="signer-wrapper-container-faqs-image"
           alt=""
         />
@@ -57,6 +57,7 @@ import UnderlinedText from "@/components/ui/UnderlinedText.vue";
   box-sizing: border-box;
   padding: 90px 0 40px;
   flex-direction: column;
+  max-width: 1440px;
 
   &-container {
     display: flex;
