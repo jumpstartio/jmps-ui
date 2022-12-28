@@ -82,7 +82,7 @@ export default {
     return {
       hovering: false,
       top: false,
-      value: false,
+      value: false
     };
   },
   unmounted() {

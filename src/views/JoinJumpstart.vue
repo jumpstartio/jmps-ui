@@ -1,17 +1,11 @@
 <script setup>
 import JmpsFooter from "@/components/ui/JmpsFooter.vue";
 import LandingBanner from "@/components/home/LandingBanner.vue";
-import MentorsShowcase from "@/components/home/MentorsShowcase.vue";
 import ContactBanner from "@/components/home/ContactBanner.vue";
-import FeatureBanner from "@/components/home/FeatureBanner.vue";
-import HowItWorks from "@/components/home/HowItWorks.vue";
-import FeedbackSection from "@/components/home/FeedbackSection.vue";
 import FaqSection from "@/components/home/FaqSection.vue";
-import { fansFaqs } from "@/constants/home";
-
-const scrollToContactBanner = () => {
-  document.getElementById("contact").scrollIntoView();
-};
+import UserNameSigner from "@/components/home/UserNameSigner.vue";
+import JoinerBanner from "@/components/mentor-joiner/JoinerBanner.vue";
+import { faqs } from "@/constants/home";
 </script>
 
 <template>
@@ -19,22 +13,21 @@ const scrollToContactBanner = () => {
   <div class="home-wrapper">
     <LandingBanner
       class="home-banner"
-      :bannerImage="'src/assets/images/success.webp'"
+      :description="'Get 1:1 sessions bookings with your network. Guide them, mentor them, help them change their lives. It\'s more satisfying than you think. And it takes 2 minutes to get started'"
+      :bannerImage="'src/assets/images/content-creator.webp'"
+      :width="624"
+      :height="720"
+      :buttonText="'Get Started for free →'"
     >
       <p>
-        Get
-        <span class="text-main">really</span>
-        good at Sofwtare engineering interviews
+        Share your
+        <span class="text-main">knowledge</span>
+        with your network.
       </p>
     </LandingBanner>
-    <FeatureBanner class="feature-banner" />
-    <div class="line-divider" />
-    <HowItWorks id="h-i-w-container" class="how-it-works" />
-    <div class="line-divider" />
-    <mentors-showcase id="m-s-container" class="mentor-showcase" />
-    <div class="line-divider" />
-    <FeedbackSection />
-    <FaqSection :faqs="fansFaqs" @scroll-to-action="scrollToContactBanner" />
+    <UserNameSigner />
+    <JoinerBanner />
+    <FaqSection :faqs="faqs" @scroll-to-action="scrollToContactBanner" />
     <ContactBanner class="contact" id="contact" />
     <JmpsFooter class="footer" />
   </div>
@@ -63,7 +56,6 @@ const scrollToContactBanner = () => {
   .mentor-showcase {
     // opacity: 0;
     // transition: opacity 3s;
-    max-width: 1440px;
   }
   .how-it-works {
     // opacity: 0;

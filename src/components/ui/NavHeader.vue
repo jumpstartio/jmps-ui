@@ -1,7 +1,6 @@
 <script setup>
 import { RouterLink } from "vue-router";
 import JmpsButton from "@/components/ui/JmpsButton.vue";
-import JmpsInput from "@/components/ui/JmpsInput.vue";
 import DropdownMenu from "@/components/ui/DropdownMenu.vue";
 import NavDropDownCard from "@/components/ui/NavDropDownCard.vue";
 
@@ -162,7 +161,7 @@ defineProps({
 }
 @media only screen and (min-width: 1600px) {
   .header-wrapper {
-    padding: 0 178px;
+    padding: 0 13%;
   }
 }
 </style>

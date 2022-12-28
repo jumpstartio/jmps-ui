@@ -19,6 +19,70 @@ export const infoSteps = [
   },
 ];
 
+export const faqs = [
+  {
+    question: "What is Jumpstart?",
+    answer:
+      "Jumpstart is a tool that enables you to connect with your audience through 1:1 sessions - to share your knowledge and monetise your time better. Just create your personal link, add your services, availability and charges; and share your link with your followers. Your followers can now book a call to connect with you",
+  },
+  {
+    question: "Can I conduct paid sessions?",
+    answer: "Absolutely, we enable you to conduct both free and paid sessions with your followers."
+  },
+  {
+    question: "What is Jumpstart?",
+    answer:
+      "Jumpstart is a tool that enables you to connect with your audience through 1:1 sessions - to share your knowledge and monetise your time better. Just create your personal link, add your services, availability and charges; and share your link with your followers. Your followers can now book a call to connect with you",
+  },
+  {
+    question: "How much can I charge for my sessions?",
+    answer:
+      "It really depends on how much value you think you're providing and how much are your followers willing to pay. For idea, our creators charge anywhere from $50 to $500 for a session",
+  },
+  {
+    question: "How do the payments work?",
+    answer:
+      "You can collect payments from anywhere in the world in your preferred currency. Payouts are Instant with the help of our integration with Stripe and Paypal",
+  },
+  {
+    question: "Wait, is Jumpstart really free?",
+    answer:
+      "Yes! We're free to use and don't charge you any commissions or convenience fees either. So what are you waiting for? Claim your Jumpstart link and start connecting 1:1 with your followers for free!",
+  },
+]
+
+export const fansFaqs = [
+  {
+    question: "What is Jumpstart?",
+    answer:
+      "Jumpstart is a tool that enables you to connect with your audience through 1:1 sessions - to share your knowledge and monetise your time better. Just create your personal link, add your services, availability and charges; and share your link with your followers. Your followers can now book a call to connect with you",
+  },
+  {
+    question: "How can I book with a mentor?",
+    answer: "Absolutely, we enable you to conduct both free and paid sessions with your followers."
+  },
+  {
+    question: "What is Jumpstart?",
+    answer:
+      "Jumpstart is a tool that enables you to connect with your audience through 1:1 sessions - to share your knowledge and monetise your time better. Just create your personal link, add your services, availability and charges; and share your link with your followers. Your followers can now book a call to connect with you",
+  },
+  {
+    question: "How much can do I pay for my sessions?",
+    answer:
+      "It really depends on how much value you think you're providing and how much are your followers willing to pay. For idea, our creators charge anywhere from $50 to $500 for a session",
+  },
+  {
+    question: "How do the payments work?",
+    answer:
+      "You can collect payments from anywhere in the world in your preferred currency. Payouts are Instant with the help of our integration with Stripe and Paypal",
+  },
+  {
+    question: "Wait, is Jumpstart really free?",
+    answer:
+      "Yes! We're free to use and don't charge you any commissions or convenience fees either. So what are you waiting for? Claim your Jumpstart link and start connecting 1:1 with your followers for free!",
+  },
+]
+
 export const interviewers = [
   {
     id: 10002,

@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import { capitalizeFirstLetter } from "../utils/helper";
 import HomeView from "../views/HomeView.vue";
 import Interviewers from "../views/Interviewers.vue";
+import JoinJumpstart from "../views/JoinJumpstart.vue";
 import ErrorPage from "../views/ErrorPage.vue";
 import AuthenticatePage from "../views/AuthenticatePage.vue";
 
@@ -26,6 +27,11 @@ const router = createRouter({
       path: "/interviewers",
       name: "interviewers",
       component: Interviewers,
+    },
+    {
+      path: "/join-jumpstart",
+      name: "interviewers",
+      component: JoinJumpstart,
     },
     {
       path: "/:pathMatch(.*)*",

@@ -28,19 +28,26 @@
       v-if="inputType !== 'textarea' && inputType !== 'content-rich-input'"
     >
       <label :for="id">
-        <img
-          class="icon icon-prefix"
-          :style="prefixStyles"
-          :src="getPrefixIcon"
-          v-if="prefixIcon"
-          alt="prefix icon"
-        />
+        <div class="icon">
+          <img
+            class="icon icon-prefix"
+            :style="prefixStyles"
+            :src="getPrefixIcon"
+            v-if="prefixIcon"
+            alt="prefix icon"
+          />
+          <slot
+            :name="slotname"
+            class="font-15 font-medium slot"
+            :style="prefixStyles"
+          ></slot>
+        </div>
       </label>
       <input
         autocomplete="off"
         class="input-box"
         :id="id"
-        :style="`height: ${height}; width: ${width}; border: ${border};`"
+        :style="`height: ${height}; width: ${width}; border: ${border}; border-radius: ${borderRadius}; outline: ${outline}; padding-left: ${inputBoxPadding}`"
         :class="[
           `font-${textSize}`,
           errorMessage ? 'border-error' : null,
@@ -100,7 +107,7 @@
         class="icon"
         :class="isMobile ? 'suffix-style-mobile' : 'suffix-style-desktop'"
       >
-        <slot :name="slotname" class="font-15 font-medium"></slot>
+        <!-- <slot :name="slotname" class="font-15 font-medium"></slot> -->
       </div>
     </div>
     <textarea
@@ -229,12 +236,24 @@ export default {
       type: String,
       default: "",
     },
+    borderRadius: {
+      type: String,
+      default: "8px",
+    },
+    outline: {
+      type: String,
+      default: null,
+    },
+    inputBoxPadding: {
+      type: String,
+      default: null,
+    },
     prefixStyle: {
       type: Object,
       default: () => {
         return {
-          prefixTop: "5px",
-          prefixLeft: "4px",
+          prefixTop: "7px",
+          prefixLeft: "10px",
           prefixWidth: "32px",
           prefixHeight: "32px",
         };
@@ -329,6 +348,10 @@ export default {
       default: "",
       required: false,
     },
+    imageExtension: {
+      type: String,
+      default: "svg",
+    },
   },
   setup(props, { emit }) {
     const visibility = ref("text");
@@ -346,12 +369,12 @@ export default {
     });
     const getPrefixIcon = computed(() => {
       if (props.prefixIcon) {
-        return require(`../../../assets/images/icons/${props.prefixIcon}`);
+        return `/src/assets/icons/${props.prefixIcon}.${props.imageExtension}`;
       } else return null;
     });
     const getSuffixIcon = computed(() => {
       if (props.suffixIcon) {
-        return require(`../../../assets/images/icons/${props.suffixIcon}`);
+        return `/src/assets/icons/${props.suffixIcon}.${props.imageExtension}`;
       } else return null;
     });
     const prefixStyles = computed(() => {
@@ -494,7 +517,6 @@ input[autocomplete="off"]::-webkit-credentials-auto-fill-button {
     padding-left: 16px;
     box-sizing: border-box;
     border: 1px solid $border-color;
-    border-radius: 8px;
     background-color: $background-input;
     font-family: $font-family;
     caret-color: $brand-color;
@@ -598,6 +620,11 @@ input[autocomplete="off"]::-webkit-credentials-auto-fill-button {
   cursor: pointer;
   display: flex;
   align-items: center;
+}
+.slot {
+  position: absolute;
+  left: 40px;
+  padding-left: 40px;
 }
 .suffix-style-desktop {
   top: 19px;
