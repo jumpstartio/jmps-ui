@@ -50,7 +50,8 @@
         :style="`height: ${height}; width: ${width}; border: ${border}; border-radius: ${borderRadius}; outline: ${outline}; padding-left: ${inputBoxPadding}`"
         :class="[
           `font-${textSize}`,
-          errorMessage ? 'border-error' : null,
+          showOuterShadow ? 'input-box-shadow' : null,
+          error ? 'border-error' : null,
           size ? `input-${size}` : 'input-large',
           prefixIcon ? 'placeholder-pos' : null,
         ]"
@@ -66,9 +67,9 @@
             return null;
           }
         "
-        @keydown="
+        @keydown.enter="
           validate
-            ? $emit('key-down', $event)
+            ? $emit('enter-pressed')
             : () => {
                 return null;
               }
@@ -150,7 +151,7 @@
     <p class="description-bottom font-15" v-if="descriptionBottom">
       {{ descriptionBottom }}
     </p>
-    <p class="input-error text-error" v-if="errorMessage">
+    <p class="input-error text-error" v-if="error">
       {{ errorMessage }}
     </p>
   </div>
@@ -171,6 +172,7 @@ export default {
     "suffix-clicked",
     "key-down",
     "key-up",
+    "enter-pressed",
   ],
   props: {
     modelValue: {
@@ -183,6 +185,10 @@ export default {
     subLabel: {
       type: String,
       default: "",
+    },
+    showOuterShadow: {
+      type: Boolean,
+      default: true,
     },
     name: {
       type: String,
@@ -284,6 +290,10 @@ export default {
           ].indexOf(value) !== -1
         );
       },
+    },
+    error: {
+      type: Boolean,
+      default: false,
     },
     errorMessage: {
       type: String,
@@ -552,6 +562,15 @@ input[autocomplete="off"]::-webkit-credentials-auto-fill-button {
     &::selection {
       background-color: $brand-color-selected-text;
     }
+    &-shadow {
+      &:focus {
+        outline: none;
+        background-color: $white;
+        border: 1px solid $primary-main;
+        color: $primary-main-text;
+        box-shadow: 0 0 0 3pt $input-box-shadow;
+      }
+    }
   }
 
   &-error {
@@ -618,8 +637,10 @@ input[autocomplete="off"]::-webkit-credentials-auto-fill-button {
 .icon {
   position: absolute;
   cursor: pointer;
+  align-items: center;
   display: flex;
   align-items: center;
+  height: 100%;
 }
 .slot {
   position: absolute;

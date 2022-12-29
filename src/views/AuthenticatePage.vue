@@ -111,6 +111,7 @@ export default {
 <style lang="scss" scoped>
 .authentication-container {
   display: flex;
+  flex-direction: row;
 }
 @media only screen and (max-width: 1023px) {
   .authentication-container {
