@@ -7,7 +7,8 @@
         </p>
         <p class="title-17">
           Ditch the back and forth of irrelevant emails and texts. And the
-          awkwardness of asking for payments. Just create your Jumpstart link and share with your network.
+          awkwardness of asking for payments. Just create your Jumpstart link
+          and share with your network.
         </p>
         <div class="signer-wrapper-container-info-action">
           <JmpsInput
@@ -19,13 +20,16 @@
             :height="'48px'"
             :outline="'3px solid rgb(62,24,207, 0.14)'"
             :slotname="'default'"
-            :inputBoxPadding="'160px'"
+            :inputBoxPadding="'152px'"
+            v-model="userName"
+            :errorMessage="errorMessage"
+            :enterClickedEnable="true"
+            :validate="true"
+            @enter-pressed="goToRegister"
+            @focus="inputClicked"
           >
             <template #default>
-              <p>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                jumpstart.io/
-              </p>
+              <span class="m-l-40">jumpstart.io/</span>
             </template>
           </JmpsInput>
           <UnderlinedText
@@ -46,8 +50,23 @@
 </template>
 
 <script setup>
+import { useRouter } from "vue-router";
 import JmpsInput from "@/components/ui/JmpsInput.vue";
 import UnderlinedText from "@/components/ui/UnderlinedText.vue";
+import { ref } from "vue";
+const router = useRouter();
+const userName = ref("");
+const errorMessage = ref("");
+const goToRegister = () => {
+  if (userName.value.length !== 0) {
+    router.push(`/authenticate/signup?username=${userName.value}`);
+  } else {
+    errorMessage.value = "Enter an username to start";
+  }
+};
+const inputClicked = () => {
+  errorMessage.value = "";
+};
 </script>
 
 <style lang="scss" scoped>
@@ -69,6 +88,9 @@ import UnderlinedText from "@/components/ui/UnderlinedText.vue";
       max-width: 55%;
       &-action {
         margin-top: 80px;
+        .m-l-40 {
+          margin-left: 50px;
+        }
       }
       .underlined-text {
         margin-top: 20px;

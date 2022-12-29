@@ -51,7 +51,7 @@ export default {
   bottom: 0;
   top: 0;
   right: 0;
-  width: 944px;
+  width: 804px;
   display: inline-block;
   align-items: center;
   .container {

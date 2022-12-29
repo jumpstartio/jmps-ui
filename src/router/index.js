@@ -18,7 +18,7 @@ const router = createRouter({
     {
       path: "/authenticate/:param",
       name: "Authenticate",
-      component: AuthenticatePage,
+    component: AuthenticatePage,
       meta: {
         title: "Home Page - Example App",
       },

@@ -41,56 +41,44 @@ export default {
       router.push("/");
     };
 
-    watch(
-      () => [route.params, route.query],
-      () => {
-        if (route.params.parameter === "login") {
-          renderSignupPage.value = false;
-          renderEmailSentPage.value = false;
-          renderUpdatePasswordPage.value = false;
-          renderForgotPasswordPage.value = false;
-          renderEmailVerifiedPage.value = false;
+    const renderPage = (page, query) => {
+      renderSignupPage.value = false;
+      renderEmailSentPage.value = false;
+      renderUpdatePasswordPage.value = false;
+      renderForgotPasswordPage.value = false;
+      renderEmailVerifiedPage.value = false;
+      renderLoginPage.value = false;
+
+      switch (page) {
+        case "login":
           renderLoginPage.value = true;
-        } else if (route.params.parameter === "signup") {
-          renderLoginPage.value = false;
-          renderEmailSentPage.value = false;
-          renderUpdatePasswordPage.value = false;
-          renderForgotPasswordPage.value = false;
-          renderEmailVerifiedPage.value = false;
+          break;
+        case "signup":
           renderSignupPage.value = true;
-        } else if (route.params.parameter === "forgot-password") {
-          if (route.query.token) {
-            renderEmailSentPage.value = false;
-            renderForgotPasswordPage.value = false;
-            renderLoginPage.value = false;
-            renderSignupPage.value = false;
-            renderEmailVerifiedPage.value = false;
+          break;
+        case "forgotPassword":
+          if (query.token) {
             renderUpdatePasswordPage.value = true;
           } else {
-            if (route.query.status === "sent") {
-              renderForgotPasswordPage.value = false;
-              renderUpdatePasswordPage.value = false;
-              renderLoginPage.value = false;
-              renderSignupPage.value = false;
-              renderEmailVerifiedPage.value = false;
+            if (query.status === "sent") {
               renderEmailSentPage.value = true;
-            } else if (route.query.status === "verified") {
-              renderEmailSentPage.value = false;
-              renderForgotPasswordPage.value = false;
-              renderUpdatePasswordPage.value = false;
-              renderLoginPage.value = false;
-              renderSignupPage.value = false;
+            } else if (query.status === "verified") {
               renderEmailVerifiedPage.value = true;
             } else {
-              renderEmailSentPage.value = false;
-              renderUpdatePasswordPage.value = false;
-              renderLoginPage.value = false;
-              renderEmailVerifiedPage.value = false;
-              renderSignupPage.value = false;
               renderForgotPasswordPage.value = true;
             }
           }
-        }
+          break;
+        default:
+          // do nothing
+          break;
+      }
+    };
+
+    watch(
+      () => [route.params, route.query],
+      () => {
+        renderPage(route.params.param, route.query);
       },
       { immediate: true, deep: true }
     );
@@ -111,6 +99,7 @@ export default {
 <style lang="scss" scoped>
 .authentication-container {
   display: flex;
+  flex-direction: row;
 }
 @media only screen and (max-width: 1023px) {
   .authentication-container {
