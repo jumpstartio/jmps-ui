@@ -14,7 +14,9 @@
           <JmpsInput
             :placeholder="'yourname'"
             :prefixIcon="'favicon'"
-            :imageExtension="'png'"
+            :suffixIcon="'icon-arrow-right'"
+            :showSuffixIcon="userName.length"
+            :prefixImageExtension="'png'"
             :borderRadius="'40px'"
             :border="'2px solid #141414;'"
             :height="'48px'"

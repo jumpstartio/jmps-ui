@@ -36,7 +36,7 @@ defineProps({
   display: flex;
   flex-direction: column;
   &-scratch {
-    margin-top: -20px;
+    margin-top: -14px;
   }
 }
 </style>

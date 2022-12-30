@@ -99,7 +99,7 @@
           class="icon icon-suffix"
           :src="getSuffixIcon"
           :style="suffixStyles"
-          v-if="suffixIcon"
+          v-if="suffixIcon && showSuffixIcon"
           @click="suffixClickEnable ? $emit('suffix-clicked') : null"
           alt="suffix-icon"
         />
@@ -213,6 +213,10 @@ export default {
     readOnly: {
       type: Boolean,
       default: false,
+    },
+    showSuffixIcon: {
+      type: Boolean,
+      default: true,
     },
     blurEnable: {
       type: Boolean,
@@ -358,7 +362,11 @@ export default {
       default: "",
       required: false,
     },
-    imageExtension: {
+    prefixImageExtension: {
+      type: String,
+      default: "svg",
+    },
+    suffixImageExtension: {
       type: String,
       default: "svg",
     },
@@ -379,12 +387,12 @@ export default {
     });
     const getPrefixIcon = computed(() => {
       if (props.prefixIcon) {
-        return `/src/assets/icons/${props.prefixIcon}.${props.imageExtension}`;
+        return `@/assets/icons/${props.prefixIcon}.${props.prefixImageExtension}`;
       } else return null;
     });
     const getSuffixIcon = computed(() => {
-      if (props.suffixIcon) {
-        return `/src/assets/icons/${props.suffixIcon}.${props.imageExtension}`;
+      if (props.showSuffixIcon && props.suffixIcon) {
+        return `/src/assets/icons/${props.suffixIcon}.${props.suffixImageExtension}`;
       } else return null;
     });
     const prefixStyles = computed(() => {
