@@ -69,22 +69,12 @@ const sendFeedback = () => {
         <span class="title-medium">Pricing</span>
       </RouterLink>
       <RouterLink to="/authenticate/login" class="item">
-        <JmpsButton
-          v-if="!userSignedIn"
-          :type="'subtle'"
-          class="item"
-          @button-clicked="login"
-        >
+        <JmpsButton v-if="!userSignedIn" :type="'subtle'" class="item">
           Log in
         </JmpsButton>
       </RouterLink>
       <RouterLink to="/authenticate/signup" class="item">
-        <JmpsButton
-          v-if="!userSignedIn"
-          :type="'primary'"
-          class="item"
-          @button-clicked="signup"
-        >
+        <JmpsButton v-if="!userSignedIn" :type="'primary'" class="item">
           Sign up free
         </JmpsButton>
       </RouterLink>

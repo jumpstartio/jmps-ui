@@ -59,17 +59,16 @@
       >
     </div>
   </div>
-  <loader />
 </template>
 <script>
 import { useRouter } from "vue-router";
-import { useStore } from "vuex";
-import { ref } from "vue";
+import { computed, ref } from "vue";
 import { watch } from "vue";
 import { validateEmail } from "@/utils/helper";
-import storage from "@/utils/storage";
 import JmpsButton from "@/components/ui/JmpsButton.vue";
 import JmpsInput from "@/components/ui/JmpsInput.vue";
+import { useAuthStore } from "../../stores/auth";
+import { storeToRefs } from "pinia";
 
 export default {
   name: "SigninScreen",
@@ -79,12 +78,13 @@ export default {
   },
   setup() {
     const router = useRouter();
-    const store = useStore();
+    const authStore = useAuthStore();
     const email = ref("");
     const password = ref("");
     const isValidEmail = ref(false);
     const isPasswordIncorrect = ref(false);
     const isUserNotExist = ref(false);
+    const userInfo = ref({});
     const goToSignUp = () => {
       router.push("/authenticate/signup");
     };
@@ -92,24 +92,15 @@ export default {
       router.push("/authenticate/forgot-password");
     };
     const loginWithEmail = () => {
-      store.dispatch("loginUser", {
-        requestBody: {
-          email: email.value,
-          password: password.value,
-        },
-        success: (response) => {
-          console.log(response);
-          if (response.apiResponseStatus === "SUCCESS") {
-            storage.save("access_token", response.responseObject.token);
-            router.push("/home");
-          } else if (response.apiResponseStatus === "INCORRECT_PASSWORD") {
-            isPasswordIncorrect.value = true;
-          } else if (response.apiResponseStatus === "USER_NOT_FOUND") {
-            isUserNotExist.value = true;
-          }
-        },
-      });
+      let requestBody = {
+        email: email.value,
+        password: password.value,
+      };
+      authStore.loginUser(requestBody).catch((error) => console.log(error));
+      console.log(currentList.value);
     };
+
+    const currentList = computed(() => authStore.getLoggedInUserInfo);
     watch(
       () => email.value,
       () => {

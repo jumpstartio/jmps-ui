@@ -3,6 +3,7 @@ import { ref, watch } from "vue";
 import { RouterView, useRoute } from "vue-router";
 import NavHeader from "./components/ui/NavHeader.vue";
 const route = useRoute();
+
 const showHeader = ref(true);
 watch(
   () => route.name,
