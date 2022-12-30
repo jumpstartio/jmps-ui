@@ -46,6 +46,7 @@
           :errorMessage="
             isPasswordIncorrect ? 'Password Incorrect' : 'User Does Not Exist'
           "
+          @keypress.enter="loginWithEmail"
         />
       </div>
       <span
@@ -69,6 +70,8 @@ import JmpsButton from "@/components/ui/JmpsButton.vue";
 import JmpsInput from "@/components/ui/JmpsInput.vue";
 import { useAuthStore } from "../../stores/auth";
 import { storeToRefs } from "pinia";
+import storage from "@/utils/storage";
+
 
 export default {
   name: "SigninScreen",
@@ -91,23 +94,31 @@ export default {
     const goToForgotPassword = () => {
       router.push("/authenticate/forgot-password");
     };
+
     const loginWithEmail = () => {
       let requestBody = {
         email: email.value,
         password: password.value,
       };
-      authStore.loginUser(requestBody).catch((error) => console.log(error));
-      console.log(currentList.value);
-    };
+      authStore.loginUser({}, { requestBody, success: handleLoginSuccess });
+    },
+    handleLoginSuccess = (response) => {
+      console.log(response);
+      if (response.code === 200 && response.message === 'SUCCESS') {
+            storage.save('access_token', response.data.token)
+            router.push('/dashboard')
+          } else if (response.apiResponseStatus === 'INCORRECT_PASSWORD') {
+            isPasswordIncorrect.value = true
+          } else if (response.apiResponseStatus === 'USER_NOT_FOUND') {
+            isUserNotExist.value = true
+          }
+    }
 
-    const currentList = computed(() => authStore.getLoggedInUserInfo);
     watch(
       () => email.value,
       () => {
         if (email.value) {
-          console.log(isValidEmail.value);
           if (validateEmail(email.value)) {
-            console.log(isValidEmail.value);
             isValidEmail.value = true;
           } else {
             isValidEmail.value = false;

@@ -13,26 +13,25 @@ export const useAuthStore = defineStore({
     getIsUserLoggedIn: (state) => state.isUserLoggedIn,
   },
   actions: {
-    async loginUser(requestBody, success) {
-      const axiosConfig = {
-        method: "POST",
-        baseURL: "http://localhost:1324/",
-        url: "/login",
-        data: requestBody,
-        params: { loginType: "email" },
-      };
-      axios(axiosConfig)
-        .then((response) => {
-          // console.log(response.data);
-          if (response.code === 200 && response.message === "SUCCESS") {
-            this.loggedInUserInfo = response.data;
-            this.isUserLoggedIn = true;
-          }
-          success && success(response.data);
-        })
-        .catch((error) => {
-          console.error(error);
-        });
+    async loginUser({ commit, state }, { requestBody, success }) {
+      try {
+        const axiosConfig = {
+          method: "POST",
+          baseURL: "http://localhost:1324",
+          url: "/login",
+          data: requestBody,
+          params: { loginType: "email" },
+        };
+        const response = await axios(axiosConfig);
+        if (response.data.code === 200 && response.data.message === "SUCCESS") {
+          this.loggedInUserInfo = response.data;
+          this.isUserLoggedIn = true;
+          storage.save("token", response.data.data.token);
+        }
+        success && success(response.data);
+      } catch (error) {
+        console.error(error);
+      }
     },
     getUserDetails({ commit, state }, { success }) {
       const axiosConfig = {

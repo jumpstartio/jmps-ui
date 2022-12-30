@@ -1,10 +1,15 @@
 <script setup>
+import { storeToRefs } from "pinia";
 import { ref, watch } from "vue";
 import { RouterView, useRoute } from "vue-router";
 import NavHeader from "./components/ui/NavHeader.vue";
+import { useAuthStore } from "./stores/auth";
 const route = useRoute();
 
 const showHeader = ref(true);
+const { isUserLoggedIn } = storeToRefs(useAuthStore());
+console.log(isUserLoggedIn);
+
 watch(
   () => route.name,
   () => {
@@ -26,27 +31,7 @@ watch(
 </script>
 
 <template>
-  <NavHeader class="header" v-if="showHeader" />
-
-  <!-- <header>
-    <img
-      alt="Vue logo"
-      class="logo"
-      src="@/assets/logo.svg"
-      width="125"
-      height="125"
-    />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
-  </header> -->
-
+  <NavHeader class="header" v-if="showHeader" :userSignedIn="isUserLoggedIn" />
   <RouterView style="width: 100vw; box-sizing: border-box" />
 </template>
 
