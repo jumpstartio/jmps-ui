@@ -27,13 +27,7 @@ import ContactCard from "@/components/ui/ContactCard.vue";
     <div class="contact-banner-wrapper-doubt">
       <div class="contact-banner-wrapper-doubt-container">
         <p class="title-32 title-semibold">Still have doubts ?</p>
-        <JmpsButton
-          v-if="!userSignedIn"
-          :type="'primary-dark'"
-          :prefix="'icon-arrow-right'"
-          class="item"
-          @button-clicked="login"
-        >
+        <JmpsButton :type="'primary-dark'" class="item">
           Book a session with our team →
         </JmpsButton>
       </div>

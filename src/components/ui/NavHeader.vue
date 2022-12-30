@@ -3,16 +3,19 @@ import { RouterLink } from "vue-router";
 import JmpsButton from "@/components/ui/JmpsButton.vue";
 import DropdownMenu from "@/components/ui/DropdownMenu.vue";
 import NavDropDownCard from "@/components/ui/NavDropDownCard.vue";
-import { ref } from "vue";
+import { ref, toRefs, defineProps } from "vue";
 
 const feedback = ref("");
 
-defineProps({
+const props = defineProps({
   userSignedIn: {
     type: Boolean,
-    default: false,
+    default: true,
   },
 });
+
+const { userSignedIn } = toRefs(props);
+
 const sendFeedback = () => {
   console.log(feedback.value);
   console.log(document.activeElement.parentElement.parentElement);
@@ -62,6 +65,7 @@ const sendFeedback = () => {
         alt="menu"
         class="hamburger"
       />
+
       <RouterLink to="/about" class="item">
         <span class="title-medium">About</span>
       </RouterLink>
@@ -69,22 +73,12 @@ const sendFeedback = () => {
         <span class="title-medium">Pricing</span>
       </RouterLink>
       <RouterLink to="/authenticate/login" class="item">
-        <JmpsButton
-          v-if="!userSignedIn"
-          :type="'subtle'"
-          class="item"
-          @button-clicked="login"
-        >
+        <JmpsButton v-if="!userSignedIn" :type="'subtle'" class="item">
           Log in
         </JmpsButton>
       </RouterLink>
       <RouterLink to="/authenticate/signup" class="item">
-        <JmpsButton
-          v-if="!userSignedIn"
-          :type="'primary'"
-          class="item"
-          @button-clicked="signup"
-        >
+        <JmpsButton v-if="!userSignedIn" :type="'primary'" class="item">
           Sign up free
         </JmpsButton>
       </RouterLink>

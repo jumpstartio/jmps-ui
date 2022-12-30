@@ -5,20 +5,20 @@ import Interviewers from "../views/Interviewers.vue";
 import JoinJumpstart from "../views/JoinJumpstart.vue";
 import ErrorPage from "../views/ErrorPage.vue";
 import AuthenticatePage from "../views/AuthenticatePage.vue";
+import Dashboard from "../views/Dashboard.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
-    { path: "/", redirect: { name: "home" } },
     {
-      path: "/home",
+      path: "/",
       name: "home",
       component: HomeView,
     },
     {
       path: "/authenticate/:param",
       name: "Authenticate",
-    component: AuthenticatePage,
+      component: AuthenticatePage,
       meta: {
         title: "Home Page - Example App",
       },
@@ -37,17 +37,22 @@ const router = createRouter({
       path: "/:pathMatch(.*)*",
       component: ErrorPage,
     },
+    {
+      path: "/dashboard",
+      name: "Dashboard",
+      component: Dashboard,
+    },
   ],
 });
 
-router.beforeEach((to, from, next) => {
+router.beforeEach((to, _from, next) => {
   document.title = capitalizeFirstLetter(`${to.name} | Jumpstart`);
   next();
   if (to.name == undefined) {
     document.title = `Jumpstart`;
   }
   if (to.path == "/home") {
-    document.title = `Jumpstart | The ultimate interview preparation pla`;
+    document.title = `Join 1000s of creators, experts and mentors using Jumpstart to do more with their time.`;
     next();
   }
 });
