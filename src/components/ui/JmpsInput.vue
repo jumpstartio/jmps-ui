@@ -387,7 +387,7 @@ export default {
     });
     const getPrefixIcon = computed(() => {
       if (props.prefixIcon) {
-        return `/src/assets/icons/${props.prefixIcon}.${props.prefixImageExtension}`;
+        return `@/assets/icons/${props.prefixIcon}.${props.prefixImageExtension}`;
       } else return null;
     });
     const getSuffixIcon = computed(() => {
