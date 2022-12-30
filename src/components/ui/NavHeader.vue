@@ -3,18 +3,21 @@ import { RouterLink } from "vue-router";
 import JmpsButton from "@/components/ui/JmpsButton.vue";
 import DropdownMenu from "@/components/ui/DropdownMenu.vue";
 import NavDropDownCard from "@/components/ui/NavDropDownCard.vue";
+import { ref } from "vue";
+
+const feedback = ref("");
 
 defineProps({
-  msg: {
-    type: String,
-    required: false,
-    default: () => "Hi Welcome",
-  },
   userSignedIn: {
     type: Boolean,
     default: false,
   },
 });
+const sendFeedback = () => {
+  console.log(feedback.value);
+  console.log(document.activeElement.parentElement.parentElement);
+  document.activeElement.click();
+};
 </script>
 
 <template>
@@ -59,19 +62,35 @@ defineProps({
         alt="menu"
         class="hamburger"
       />
+      <RouterLink to="/about" class="item">
+        <span class="title-medium">About</span>
+      </RouterLink>
+      <RouterLink to="/pricing" class="item">
+        <span class="title-medium">Pricing</span>
+      </RouterLink>
       <RouterLink to="/authenticate/login" class="item">
         <JmpsButton
           v-if="!userSignedIn"
-          :type="'primary'"
+          :type="'subtle'"
           class="item"
           @button-clicked="login"
         >
           Log in
         </JmpsButton>
       </RouterLink>
-      <dropdown-menu :right="true" :interactive="true" :hover="true">
+      <RouterLink to="/authenticate/signup" class="item">
         <JmpsButton
           v-if="!userSignedIn"
+          :type="'primary'"
+          class="item"
+          @button-clicked="signup"
+        >
+          Sign up free
+        </JmpsButton>
+      </RouterLink>
+      <dropdown-menu :right="true" :interactive="true" :hover="true">
+        <JmpsButton
+          v-if="userSignedIn"
           :type="'subtle'"
           class="item"
           @button-clicked="signup"
@@ -79,10 +98,11 @@ defineProps({
           Send Feedback
         </JmpsButton>
         <template #dropdown>
-          <div class="feedback-section">
+          <div class="feedback-section" @keypress.enter="sendFeedback">
             <textarea
               class="feedback-section-input font-14 text-regular"
               placeholder="Write your feedback and press enter to send."
+              v-model="feedback"
             />
           </div>
         </template>

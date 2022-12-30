@@ -170,7 +170,7 @@ export default {
     box-shadow: 0 0 0 2pt $primary-light;
   }
   &:hover {
-    background-color: #187ff0;
+    background-color: $primary-dark;
   }
 
   &-primary {

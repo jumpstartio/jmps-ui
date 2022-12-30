@@ -56,7 +56,7 @@ export default {
         case "signup":
           renderSignupPage.value = true;
           break;
-        case "forgotPassword":
+        case "forgot-password":
           if (query.token) {
             renderUpdatePasswordPage.value = true;
           } else {
