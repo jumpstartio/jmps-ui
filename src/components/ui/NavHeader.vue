@@ -3,6 +3,7 @@ import { RouterLink } from "vue-router";
 import JmpsButton from "@/components/ui/JmpsButton.vue";
 import DropdownMenu from "@/components/ui/DropdownMenu.vue";
 import NavDropDownCard from "@/components/ui/NavDropDownCard.vue";
+import LoggedInUserDropDown from "@/components/ui/LoggedInUserDropDown.vue";
 import { ref, toRefs, defineProps } from "vue";
 
 const feedback = ref("");
@@ -97,6 +98,7 @@ const sendFeedback = () => {
           </div>
         </template>
       </dropdown-menu>
+      <logged-in-user-drop-down v-if="userSignedIn" />
     </div>
   </div>
 </template>
