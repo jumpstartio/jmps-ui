@@ -1,7 +1,7 @@
 <template>
   <div class="settings-wrapper">
     <div class="settings-wrapper-header">
-      <p class="title-32 title-semibold text-secondary">Settings</p>
+      <p class="title-32 title-semibold">Settings</p>
     </div>
     <profile-verification-bar />
     <div class="reset-password-section">
@@ -104,7 +104,6 @@ export default {
 .settings-wrapper {
   display: flex;
   flex-direction: column;
-  padding-top: 110px;
   &-header {
     display: flex;
     align-items: center;

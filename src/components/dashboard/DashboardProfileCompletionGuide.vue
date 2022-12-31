@@ -39,7 +39,6 @@ export default {
 
 <style lang="scss" scoped>
 .profile-completion-guide {
-  padding-top: 110px;
   .steps-card {
     margin-top: 38px;
   }

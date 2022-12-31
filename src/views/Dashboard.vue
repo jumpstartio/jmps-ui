@@ -132,6 +132,7 @@ export default {
 .dashboard-wrapper {
   display: flex;
   padding-bottom: 104px;
+  background-color: #fbf9f9;
   .left-nav-container {
     display: flex;
     width: 300px;
@@ -139,7 +140,7 @@ export default {
     position: fixed;
     top: 0px;
     .nav-toc {
-      padding: 90px 0 0 36px;
+      padding: 90px 0 0 16px;
     }
     .left-nav-separator {
       border-right: 0.5px solid #f0f2f4;
@@ -148,10 +149,15 @@ export default {
     }
   }
   .dashboard-item-container {
-    margin-left: 300px;
+    background-color: white;
+    margin-top: 90px;
+    border-radius: 8px;
+    margin-left: 260px;
+    margin-right: 16px;
     display: flex;
     flex-direction: column;
     padding-left: 70px;
+    padding-bottom: 70px;
     box-sizing: border-box;
     width: 100%;
     padding-right: 135px;

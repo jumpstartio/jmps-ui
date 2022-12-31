@@ -1,7 +1,7 @@
 <template>
   <div class="profile-wrapper">
     <div class="profile-wrapper-header">
-      <p class="title-32 title-semibold text-secondary">Profile</p>
+      <p class="title-32 title-semibold">Profile</p>
     </div>
     <div class="basic-information-section">
       <div class="basic-information-section-header">
@@ -9,7 +9,7 @@
         <div class="separator"></div>
       </div>
       <div class="basic-inputs">
-        <div class="basic-input-columns">
+        <div class="basic-input-picture">
           <img
             :src="'https://avatars.githubusercontent.com/u/26616369?v=4'"
             alt=""
@@ -113,13 +113,11 @@
 import { ref } from "vue";
 import JmpsInput from "@/components/ui/JmpsInput.vue";
 import JmpsButton from "@/components/ui/JmpsButton.vue";
-import JmpsSelect from "@/components/ui/JmpsSelect.vue";
 import { socialIcons } from "@/constants/dashboard";
 export default {
   components: {
     JmpsInput,
     JmpsButton,
-    JmpsSelect,
   },
   name: "DashboardProfile",
   setup() {
@@ -142,7 +140,6 @@ export default {
 .profile-wrapper {
   display: flex;
   flex-direction: column;
-  padding-top: 110px;
   &-header {
     display: flex;
     align-items: center;
@@ -159,22 +156,23 @@ export default {
       }
     }
     .basic-inputs {
+      max-width: 100%;
+      margin-top: 32px;
+      display: flex;
+      gap: 80px;
+      justify-content: space-between;
       .profile-photo {
         width: 185px;
         height: 185px;
         border-radius: 50%;
       }
-      max-width: 100%;
-      margin-top: 32px;
-      display: flex;
-      gap: 80px;
       .basic-input-columns {
         display: flex;
         flex-direction: column;
         gap: 12px;
+        width: 310px;
       }
       .save-changes {
-        margin-left: auto;
       }
     }
   }

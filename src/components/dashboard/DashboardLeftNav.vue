@@ -37,11 +37,16 @@ onMounted(() => {
         />
         <span class="profile-card-container-info-text">
           <span class="font-14 title-medium">Akhilesh Kumar</span>
-          <span class="font-11">jumpstart.io/akhil...</span>
+          <span class="font-11">jumpstart.io/akhilesh_k...</span>
         </span>
       </div>
       <div class="separator"></div>
-      <JmpsButton :type="'subtle'" :suffixIcon="'icon-share'" :height="36"
+      <JmpsButton
+        :type="'subtle'"
+        :suffixIcon="'icon-share'"
+        :height="36"
+        :iconSize="12"
+        :borderRadius="24"
         >Share profile</JmpsButton
       >
     </div>
@@ -66,7 +71,6 @@ onMounted(() => {
   height: 100vh;
   max-width: max-content;
   flex-direction: column;
-  margin-top: 20px;
   background-color: #fbf9f9;
   gap: 10px;
   .profile-card-container {
@@ -74,10 +78,11 @@ onMounted(() => {
     max-width: 232px;
     flex-direction: column;
     background-color: #fff !important;
-    margin-right: 10px;
-    padding: 24px 0 24px 8px;
+    margin-right: 16px;
+    padding: 24px 12px;
     box-sizing: border-box;
     border-radius: 8px;
+    gap: 10px;
     &-info {
       display: flex;
       align-items: center;
@@ -102,16 +107,16 @@ onMounted(() => {
   .menu-item {
     display: flex;
     cursor: pointer;
-    padding: 16px 8px;
+    padding: 16px 16px;
     width: 180px;
     gap: 10px;
     &:hover {
-      background-color: $secondary-light;
+      background-color: #f3f3f1;
       border-radius: 8px;
     }
   }
   .menu-item-box {
-    background-color: $secondary-light;
+    background-color: #f3f3f1;
     border-radius: 8px;
     color: $primary-dark;
     border-left-color: $primary-main;

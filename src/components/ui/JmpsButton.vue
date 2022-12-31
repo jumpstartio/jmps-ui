@@ -1,6 +1,9 @@
 <template>
   <button
-    :style="`width: ${width}${unit};height: ${height}${unit}`"
+    :style="[
+      borderRadius ? `border-radius: ${borderRadius}${borderUnit};` : null,
+      `width: ${width}${unit};height: ${height}${unit};`,
+    ]"
     :class="buttonStyle"
     :disabled="disabled"
     @click="buttonClicked"
@@ -18,7 +21,7 @@
       alt="icon"
     />
     <img class="button-icon" v-if="icon" :src="iconUrl" :alt="icon" />
-    <slot v-if="buttonText"></slot>
+    <slot v-if="buttonText" :style="`font-size: ${textFontSize}px;}`"></slot>
     <img
       class="button-icon-suffix"
       v-if="suffixIcon"
@@ -79,6 +82,18 @@ export default {
     },
     height: {
       type: Number,
+    },
+    textFontSize: {
+      type: Number,
+      default: 11,
+    },
+    borderRadius: {
+      type: Number,
+      default: null,
+    },
+    borderUnit: {
+      type: String,
+      default: "px",
     },
     unit: {
       type: String,
