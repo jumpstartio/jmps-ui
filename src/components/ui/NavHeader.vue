@@ -66,21 +66,17 @@ const sendFeedback = () => {
         class="hamburger"
       />
 
-      <RouterLink to="/about" class="item">
+      <RouterLink v-if="!userSignedIn" to="/about" class="item">
         <span class="title-medium">About</span>
       </RouterLink>
-      <RouterLink to="/pricing" class="item">
+      <RouterLink v-if="!userSignedIn" to="/pricing" class="item">
         <span class="title-medium">Pricing</span>
       </RouterLink>
-      <RouterLink to="/authenticate/login" class="item">
-        <JmpsButton v-if="!userSignedIn" :type="'subtle'" class="item">
-          Log in
-        </JmpsButton>
+      <RouterLink v-if="!userSignedIn" to="/authenticate/login" class="item">
+        <JmpsButton :type="'subtle'" class="item"> Log in </JmpsButton>
       </RouterLink>
-      <RouterLink to="/authenticate/signup" class="item">
-        <JmpsButton v-if="!userSignedIn" :type="'primary'" class="item">
-          Sign up free
-        </JmpsButton>
+      <RouterLink v-if="!userSignedIn" to="/authenticate/signup" class="item">
+        <JmpsButton :type="'primary'" class="item"> Sign up free </JmpsButton>
       </RouterLink>
       <dropdown-menu :right="true" :interactive="true" :hover="true">
         <JmpsButton

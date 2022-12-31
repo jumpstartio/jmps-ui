@@ -139,7 +139,7 @@ export default {
     position: fixed;
     top: 0px;
     .nav-toc {
-      padding: 90px 0 0 72px;
+      padding: 90px 0 0 36px;
     }
     .left-nav-separator {
       border-right: 0.5px solid #f0f2f4;
