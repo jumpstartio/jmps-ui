@@ -63,15 +63,13 @@
 </template>
 <script>
 import { useRouter } from "vue-router";
-import { computed, ref } from "vue";
+import { ref } from "vue";
 import { watch } from "vue";
 import { validateEmail } from "@/utils/helper";
 import JmpsButton from "@/components/ui/JmpsButton.vue";
 import JmpsInput from "@/components/ui/JmpsInput.vue";
 import { useAuthStore } from "../../stores/auth";
-import { storeToRefs } from "pinia";
 import storage from "@/utils/storage";
-
 
 export default {
   name: "SigninScreen",
@@ -87,7 +85,6 @@ export default {
     const isValidEmail = ref(false);
     const isPasswordIncorrect = ref(false);
     const isUserNotExist = ref(false);
-    const userInfo = ref({});
     const goToSignUp = () => {
       router.push("/authenticate/signup");
     };
@@ -96,23 +93,23 @@ export default {
     };
 
     const loginWithEmail = () => {
-      let requestBody = {
-        email: email.value,
-        password: password.value,
+        let requestBody = {
+          email: email.value,
+          password: password.value,
+        };
+        authStore.loginUser({}, { requestBody, success: handleLoginSuccess });
+      },
+      handleLoginSuccess = (response) => {
+        console.log(response);
+        if (response.code === 200 && response.message === "SUCCESS") {
+          storage.save("access_token", response.data.token);
+          router.push("/dashboard");
+        } else if (response.apiResponseStatus === "INCORRECT_PASSWORD") {
+          isPasswordIncorrect.value = true;
+        } else if (response.apiResponseStatus === "USER_NOT_FOUND") {
+          isUserNotExist.value = true;
+        }
       };
-      authStore.loginUser({}, { requestBody, success: handleLoginSuccess });
-    },
-    handleLoginSuccess = (response) => {
-      console.log(response);
-      if (response.code === 200 && response.message === 'SUCCESS') {
-            storage.save('access_token', response.data.token)
-            router.push('/dashboard')
-          } else if (response.apiResponseStatus === 'INCORRECT_PASSWORD') {
-            isPasswordIncorrect.value = true
-          } else if (response.apiResponseStatus === 'USER_NOT_FOUND') {
-            isUserNotExist.value = true
-          }
-    }
 
     watch(
       () => email.value,

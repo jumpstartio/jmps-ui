@@ -26,33 +26,39 @@ export const useAuthStore = defineStore({
         if (response.data.code === 200 && response.data.message === "SUCCESS") {
           this.loggedInUserInfo = response.data;
           this.isUserLoggedIn = true;
-          storage.save("token", response.data.data.token);
+          storage.save("access_token", response.data.data.token);
         }
         success && success(response.data);
       } catch (error) {
         console.error(error);
+        window.location.href = "/authenticate/login";
       }
     },
     getUserDetails({ commit, state }, { success }) {
       const axiosConfig = {
-        method: "get",
-        baseURL: "http://localhost:9006/api/v1/auth",
-        url: "/secure/user",
+        method: "GET",
+        baseURL: "http://localhost:1324/secure",
+        url: "/user",
         headers: {
           Authorization: "Bearer" + " " + storage.fetch("access_token"),
         },
       };
       axios(axiosConfig)
         .then((response) => {
-          if (response.data.apiResponseStatus === "SUCCESS") {
-            commit("setloggedInUserInfo", response.data.responseObject);
-            commit("setIsUserLoggedIn", true);
+          if (
+            response.data.code === 200 &&
+            response.data.message === "SUCCESS"
+          ) {
+            this.loggedInUserInfo = response.data;
+            this.isUserLoggedIn = true;
+            storage.save("access_token", response.data.data.token);
+          } else {
+            window.location.href = "/authenticate/login";
           }
           success && success(response.data);
         })
         .catch((error) => {
           console.error(error);
-          window.location.href = "/authenticate/login";
         });
     },
     registerUser({ commit, state }, { requestBody, success }) {

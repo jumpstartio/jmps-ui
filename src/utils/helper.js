@@ -1,6 +1,8 @@
 import moment from "moment-timezone";
 import { dateFormat } from "@/constants/date-format";
 import { computed } from "vue";
+import { storeToRefs } from "pinia";
+import { useAuthStore } from "../stores/auth";
 
 export const isMobile = computed(() => window.innerWidth < "600");
 export const isTablet = computed(
@@ -208,3 +210,17 @@ export const calculateDuration = (timeInMinutes) => {
 export const capitalizeFirstLetter = (string) => {
   return string.charAt(0).toUpperCase() + string.slice(1);
 };
+
+export const userInfo = computed(() => {
+  const { loggedInUserInfo } = storeToRefs(useAuthStore());
+  const userInfo = loggedInUserInfo.value.data;
+  return {
+    userId: userInfo.userId,
+    firstName: userInfo.firstName,
+    lastName: userInfo.lastName,
+    fullName: userInfo.firstName + " " + userInfo.lastName,
+    email: userInfo.email,
+    profilePhoto: userInfo.profilePhoto,
+    userName: userInfo.userName,
+  };
+});

@@ -1,8 +1,6 @@
 <template>
   <div class="upcoming-bookings-container">
-    <p class="title-32 title-semibold text-secondary title">
-      Upcoming Bookings
-    </p>
+    <p class="title-32 title-semibold title">Upcoming Bookings</p>
     <div v-if="!upcomingBookings.length">
       <p class="title-16 title-medium text-secondary no-booking-message">
         You have no upcoming bookings. Make a booking to start sharing a
@@ -84,7 +82,6 @@ export default {
 .upcoming-bookings-container {
   display: flex;
   flex-direction: column;
-  padding-top: 110px;
   .title {
     margin-bottom: 0;
   }
