@@ -23,12 +23,12 @@ export default {
     },
     barColor: {
       type: String,
-      default: variables.primaryLight,
+      default: "#F0F2F4",
       required: false,
     },
     pegColor: {
       type: String,
-      default: variables.primaryMain,
+      default: "#604ECD",
       required: false,
     },
     transparent: {
@@ -43,7 +43,7 @@ export default {
         return {
           height: `${props.height}px`,
           width: "inherit",
-          backgroundColor: "transparent",
+          backgroundColor: "rgb(240, 242, 244)",
         };
       } else {
         return {

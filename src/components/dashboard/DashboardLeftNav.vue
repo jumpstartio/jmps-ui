@@ -47,6 +47,7 @@ onMounted(() => {
         :height="36"
         :iconSize="12"
         :borderRadius="24"
+        :style="`background-color:#fbf9f9;`"
         >Share profile</JmpsButton
       >
     </div>

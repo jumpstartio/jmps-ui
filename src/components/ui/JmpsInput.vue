@@ -387,7 +387,7 @@ export default {
     });
     const getPrefixIcon = computed(() => {
       if (props.prefixIcon) {
-        return `@/assets/icons/${props.prefixIcon}.${props.prefixImageExtension}`;
+        return `/src/assets/icons/${props.prefixIcon}.${props.prefixImageExtension}`;
       } else return null;
     });
     const getSuffixIcon = computed(() => {
@@ -576,7 +576,7 @@ input[autocomplete="off"]::-webkit-credentials-auto-fill-button {
         background-color: $white;
         border: 1px solid $primary-main;
         color: $primary-main-text;
-        box-shadow: 0 0 0 3pt $input-box-shadow;
+        box-shadow: 0 0 0 1pt $input-box-shadow;
       }
     }
   }
