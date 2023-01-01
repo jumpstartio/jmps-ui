@@ -18,12 +18,7 @@ export const completionSteps = [
   },
 ];
 
-export const socialIcons = [
-  "icon-add-twitter",
-  "icon-add-linkedin",
-  "icon-add-github",
-  "icon-add-youtube",
-];
+export const socialIcons = ["LinkedIn", "Twitter", "Youtube", "Instagram"];
 
 export const dashboardLeftNavMenu = [
   {

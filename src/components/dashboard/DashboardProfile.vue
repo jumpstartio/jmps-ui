@@ -22,14 +22,14 @@
         <div class="basic-input-columns">
           <jmps-input
             :label="'First Name'"
-            :labelSize="15"
+            :labelSize="14"
             :labelWeight="'regular'"
             :placeholder="''"
             v-model="newPassword"
           />
           <jmps-input
             :label="'Last Name'"
-            :labelSize="15"
+            :labelSize="14"
             :labelWeight="'regular'"
             :placeholder="''"
             v-model="confirmPassword"
@@ -37,7 +37,7 @@
           <jmps-input
             :label="'Email'"
             :disabled="true"
-            :labelSize="15"
+            :labelSize="14"
             :labelWeight="'regular'"
             :placeholder="''"
             v-model="currentPassword"
@@ -58,15 +58,15 @@
           <jmps-input
             :label="'Jumpstart Profile Url'"
             :width="460"
-            :labelSize="15"
+            :labelSize="14"
             :labelWeight="'regular'"
             :placeholder="''"
             v-model="newPassword"
           />
           <jmps-input
-            :label="'Profile Headline'"
+            :label="'Profile Headline (Required)'"
             :width="460"
-            :labelSize="15"
+            :labelSize="14"
             :labelWeight="'regular'"
             :placeholder="''"
             v-model="newPassword"
@@ -74,7 +74,7 @@
           <jmps-input
             :label="'Bio'"
             :width="460"
-            :labelSize="15"
+            :labelSize="14"
             :labelWeight="'regular'"
             :type="'textarea'"
             :placeholder="''"
@@ -83,7 +83,7 @@
           <jmps-input
             :label="'Personal Website'"
             :width="460"
-            :labelSize="15"
+            :labelSize="14"
             :labelWeight="'regular'"
             :placeholder="''"
             v-model="newPassword"
@@ -99,10 +99,25 @@
         <p class="section-title">Social Accounts</p>
         <div class="separator"></div>
       </div>
-      <p class="text-secondary font-15">Link your social media profiles</p>
+      <p class="text-secondary font-14">Link your social media profiles</p>
       <div class="add-social">
-        <div v-for="icon in socialIcons" :key="icon">
-          <img :src="`@/assets/icons/${icon}.svg`" alt="" />
+        <div v-for="name in socialIcons" :key="name">
+          <JmpsInput
+            :placeholder="`${name} username`"
+            :height="'48px'"
+            :slotname="'default'"
+            :inputBoxPadding="'112px'"
+            v-model="userName"
+            :errorMessage="errorMessage"
+            :enterClickedEnable="true"
+            :validate="true"
+            @enter-pressed="goToRegister"
+            @focus="inputClicked"
+          >
+            <template #default>
+              <span class="m-l-40">{{ name }}</span>
+            </template>
+          </JmpsInput>
         </div>
       </div>
     </div>
@@ -124,11 +139,18 @@ export default {
     const currentPassword = ref("");
     const newPassword = ref("");
     const confirmPassword = ref("");
+    const prefixStyle = {
+      prefixTop: "12px",
+      prefixLeft: "10px",
+      prefixWidth: "24px",
+      prefixHeight: "24px",
+    };
     return {
       currentPassword,
       newPassword,
       confirmPassword,
       socialIcons,
+      prefixStyle,
     };
   },
 };
@@ -223,11 +245,14 @@ export default {
         min-width: fit-content;
       }
     }
+    .m-l-40 {
+      margin-left: 20px;
+    }
     .add-social {
       margin-top: 24px;
-      max-width: 320px;
       display: flex;
-      justify-content: space-between;
+      flex-direction: column;
+      gap: 16px;
     }
   }
 }

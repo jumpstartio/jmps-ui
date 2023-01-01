@@ -8,7 +8,11 @@
         >
       </p>
       <div class="button-wrapper">
-        <jmps-button :prefixIcon="'icon-google'" :type="'subtle'" :height="58"
+        <jmps-button
+          :prefixIcon="'icon-google'"
+          :type="'subtle'"
+          :height="58"
+          @click="loginWithGoogle"
           >Log in with Google</jmps-button
         >
         <jmps-button
@@ -61,7 +65,7 @@
     </div>
   </div>
 </template>
-<script>
+<script setup>
 import { useRouter } from "vue-router";
 import { ref } from "vue";
 import { watch } from "vue";
@@ -70,74 +74,57 @@ import JmpsButton from "@/components/ui/JmpsButton.vue";
 import JmpsInput from "@/components/ui/JmpsInput.vue";
 import { useAuthStore } from "../../stores/auth";
 import storage from "@/utils/storage";
-
-export default {
-  name: "SigninScreen",
-  components: {
-    JmpsButton,
-    JmpsInput,
-  },
-  setup() {
-    const router = useRouter();
-    const authStore = useAuthStore();
-    const email = ref("");
-    const password = ref("");
-    const isValidEmail = ref(false);
-    const isPasswordIncorrect = ref(false);
-    const isUserNotExist = ref(false);
-    const goToSignUp = () => {
-      router.push("/authenticate/signup");
-    };
-    const goToForgotPassword = () => {
-      router.push("/authenticate/forgot-password");
-    };
-
-    const loginWithEmail = () => {
-        let requestBody = {
-          email: email.value,
-          password: password.value,
-        };
-        authStore.loginUser({}, { requestBody, success: handleLoginSuccess });
-      },
-      handleLoginSuccess = (response) => {
-        console.log(response);
-        if (response.code === 200 && response.message === "SUCCESS") {
-          storage.save("access_token", response.data.token);
-          router.push("/dashboard");
-        } else if (response.apiResponseStatus === "INCORRECT_PASSWORD") {
-          isPasswordIncorrect.value = true;
-        } else if (response.apiResponseStatus === "USER_NOT_FOUND") {
-          isUserNotExist.value = true;
-        }
-      };
-
-    watch(
-      () => email.value,
-      () => {
-        if (email.value) {
-          if (validateEmail(email.value)) {
-            isValidEmail.value = true;
-          } else {
-            isValidEmail.value = false;
-          }
-        } else {
-          isValidEmail.value = false;
-        }
-      },
-      { immediate: true }
-    );
-    return {
-      email,
-      password,
-      goToForgotPassword,
-      goToSignUp,
-      isValidEmail,
-      loginWithEmail,
-      isPasswordIncorrect,
-      isUserNotExist,
-    };
-  },
+const router = useRouter();
+const authStore = useAuthStore();
+const email = ref("");
+const password = ref("");
+const isValidEmail = ref(false);
+const isPasswordIncorrect = ref(false);
+const isUserNotExist = ref(false);
+const goToSignUp = () => {
+  router.push("/authenticate/signup");
 };
+const loginWithGoogle = () => {
+  authStore.loginWithGoogle({}, { success: handleLoginSuccess });
+};
+const goToForgotPassword = () => {
+  router.push("/authenticate/forgot-password");
+};
+
+const loginWithEmail = () => {
+    let requestBody = {
+      email: email.value,
+      password: password.value,
+    };
+    authStore.loginUser({}, { requestBody, success: handleLoginSuccess });
+  },
+  handleLoginSuccess = (response) => {
+    console.log(response);
+    if (response.code === 200 && response.message === "SUCCESS") {
+      storage.save("access_token", response.data.token);
+      router.push("/dashboard");
+    } else if (response.apiResponseStatus === "INCORRECT_PASSWORD") {
+      isPasswordIncorrect.value = true;
+    } else if (response.apiResponseStatus === "USER_NOT_FOUND") {
+      isUserNotExist.value = true;
+    }
+  };
+
+watch(
+  () => email.value,
+  () => {
+    if (email.value) {
+      if (validateEmail(email.value)) {
+        isValidEmail.value = true;
+      } else {
+        isValidEmail.value = false;
+      }
+    } else {
+      isValidEmail.value = false;
+    }
+  },
+  { immediate: true }
+);
 </script>
 
 <style lang="scss" scoped>

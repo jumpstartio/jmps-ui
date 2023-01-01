@@ -215,7 +215,6 @@ export const userInfo = computed(() => {
   const { loggedInUserInfo } = storeToRefs(useAuthStore());
   const userInfo = loggedInUserInfo.value.data;
   return {
-    userId: userInfo.userId,
     firstName: userInfo.firstName,
     lastName: userInfo.lastName,
     fullName: userInfo.firstName + " " + userInfo.lastName,

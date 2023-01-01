@@ -61,6 +61,26 @@ export const useAuthStore = defineStore({
           console.error(error);
         });
     },
+    async loginWithGoogle({ commit, state }, { requestBody, success }) {
+      try {
+        const axiosConfig = {
+          method: "GET",
+          baseURL: "http://localhost:1324",
+          url: "/login/social",
+          params: { loginType: "google" },
+        };
+        const response = await axios(axiosConfig);
+        if (response.data.code === 200 && response.data.message === "SUCCESS") {
+          this.loggedInUserInfo = response.data;
+          this.isUserLoggedIn = true;
+          storage.save("access_token", response.data.data.token);
+        }
+        success && success(response.data);
+      } catch (error) {
+        console.error(error);
+        window.location.href = "/authenticate/login";
+      }
+    },
     registerUser({ commit, state }, { requestBody, success }) {
       const axiosConfig = {
         method: "POST",
