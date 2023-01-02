@@ -5,7 +5,7 @@
       Interview with <span class="text-main">Paarmita Bhargava</span>
     </p>
     <div class="interview-date">
-      <img src="'@/assets/icons/icon-calendar.svg'" alt="" />
+      <img :src="'@/assets/icons/icon-calendar.svg'" alt="" />
       <p class="font-14 font-medium text-secondary">
         Thu, Sep 09 9:15 pm - 10:00 pm
       </p>

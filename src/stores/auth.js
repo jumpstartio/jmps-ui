@@ -20,7 +20,9 @@ export const useAuthStore = defineStore({
           baseURL: "http://localhost:1324",
           url: "/login",
           data: requestBody,
-          params: { loginType: "email" },
+          params: {
+            loginType: "email",
+          },
         };
         const response = await axios(axiosConfig);
         if (response.data.code === 200 && response.data.message === "SUCCESS") {
@@ -67,7 +69,7 @@ export const useAuthStore = defineStore({
           method: "GET",
           baseURL: "http://localhost:1324",
           url: "/login/social",
-          params: { loginType: "google" },
+          // params: { loginType: "google" },
         };
         const response = await axios(axiosConfig);
         if (response.data.code === 200 && response.data.message === "SUCCESS") {
@@ -84,14 +86,16 @@ export const useAuthStore = defineStore({
     registerUser({ commit, state }, { requestBody, success }) {
       const axiosConfig = {
         method: "POST",
-        baseURL: "http://localhost:9006/api/v1/auth",
-        url: "/authenticate/register",
+        baseURL: "http://localhost:1324",
+        url: "/signup",
         data: requestBody,
+        params: { timezone: Intl.DateTimeFormat().resolvedOptions().timeZone },
       };
       axios(axiosConfig)
         .then((response) => {
-          // console.log(response);
+          console.log(response);
           success && success(response.data);
+          window.location.href = "/authenticate/login";
         })
         .catch((error) => {
           console.error(error);

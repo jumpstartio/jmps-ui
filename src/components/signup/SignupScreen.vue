@@ -73,7 +73,7 @@
 
 <script>
 // import { useStore } from "vuex";
-import { useRouter } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 import { ref } from "vue";
 import { watch } from "vue";
 import {
@@ -85,6 +85,7 @@ import {
 import JmpsButton from "@/components/ui/JmpsButton.vue";
 import JmpsInput from "@/components/ui/JmpsInput.vue";
 import PasswordValidator from "@/components/signup/PasswordValidator.vue";
+import { useAuthStore } from "../../stores/auth";
 
 export default {
   name: "signupScreen",
@@ -94,8 +95,9 @@ export default {
     PasswordValidator,
   },
   setup() {
-    // const store = useStore();
     const router = useRouter();
+    const route = useRoute();
+    const authStore = useAuthStore();
     const name = ref("");
     const email = ref("");
     const password = ref("");
@@ -106,17 +108,29 @@ export default {
       router.push("/authenticate/login");
     };
     const register = () => {
-      // store.dispatch("registerUser", {
-      //   requestBody: {
-      //     firstName: getFirstName(name.value),
-      //     lastName: getLastName(name.value),
-      //     password: password.value,
-      //     userEmail: email.value,
-      //   },
-      //   success: (response) => {
-      //     console.log(response);
-      //   },
-      // });
+      let requestBody = {
+        firstName: getFirstName(name.value),
+        username: route.query.username,
+        lastName: getLastName(name.value),
+        password: password.value,
+        email: email.value,
+        timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+      };
+      authStore.registerUser(
+        {},
+        { requestBody, success: handleRegisterSuccess }
+      );
+    };
+    const handleRegisterSuccess = (response) => {
+      console.log(response);
+      // if (response.code === 200 && response.message === "SUCCESS") {
+      //   storage.save("access_token", response.data.token);
+      //   router.push("/dashboard");
+      // } else if (response.apiResponseStatus === "INCORRECT_PASSWORD") {
+      //   isPasswordIncorrect.value = true;
+      // } else if (response.apiResponseStatus === "USER_NOT_FOUND") {
+      //   isUserNotExist.value = true;
+      // }
     };
     watch(
       () => [email.value, name.value],

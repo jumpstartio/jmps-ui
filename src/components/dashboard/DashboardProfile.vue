@@ -104,15 +104,16 @@
         <div v-for="name in socialIcons" :key="name">
           <JmpsInput
             :placeholder="`${name} username`"
-            :height="'48px'"
+            :height="'36px'"
             :slotname="'default'"
-            :inputBoxPadding="'112px'"
+            :inputBoxPadding="'115px'"
             v-model="userName"
             :errorMessage="errorMessage"
             :enterClickedEnable="true"
             :validate="true"
             @enter-pressed="goToRegister"
             @focus="inputClicked"
+            :outline="'1px solid rgb(62,24,207, 0.14)'"
           >
             <template #default>
               <span class="m-l-40">{{ name }}</span>
@@ -246,7 +247,12 @@ export default {
       }
     }
     .m-l-40 {
-      margin-left: 20px;
+      display: flex;
+      align-items: center;
+      padding-left: 20px;
+      height: 100%;
+      border-right: 1px solid $input-box-shadow;
+      width: 88px;
     }
     .add-social {
       margin-top: 24px;

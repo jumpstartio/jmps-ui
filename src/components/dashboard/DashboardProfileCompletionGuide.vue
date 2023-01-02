@@ -1,11 +1,12 @@
 <template>
   <div class="profile-completion-guide">
-    <p class="title-32 title-semibold">Hello Akhilesh 👋</p>
-    <p class="sub-title title-24 title-semibold">
+    <p class="title-32 title-semibold">Hello, Akhilesh 👋</p>
+    <div class="separator" />
+    <p class="sub-title title-19 title-semibold">
       Let's complete your profile.
     </p>
-    <p class="description text-secondary">
-      Get more by setting up a profile you will love.
+    <p class="description text-secondary font-14">
+      Get more by setting up a profile your audience will love.
     </p>
     <progressbar :progress="progress" />
     <profile-completion-steps

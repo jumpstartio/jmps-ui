@@ -32,7 +32,17 @@ export const dashboardLeftNavMenu = [
     submenue: [],
   },
   {
-    title: "Bookings",
+    title: "Chats",
+    icon: "icon-review",
+    submenu: [],
+  },
+  {
+    title: "Services",
+    icon: "icon-service",
+    submenu: ["Upcoming", "Past"],
+  },
+  {
+    title: "Calendar",
     icon: "icon-bookings",
     submenu: ["Upcoming", "Past"],
   },
@@ -42,19 +52,9 @@ export const dashboardLeftNavMenu = [
     submenu: [],
   },
   {
-    title: "Reviews",
-    icon: "icon-review",
-    submenu: [],
-  },
-  {
     title: "Profile",
     icon: "icon-user",
     submenu: [],
-  },
-  {
-    title: "Availibility",
-    icon: "icon-bookings",
-    submenu: ["Upcoming", "Past"],
   },
   {
     title: "Settings",
