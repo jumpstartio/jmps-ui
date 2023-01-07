@@ -58,7 +58,7 @@ onMounted(() => {
         :id="'menu-item' + menu.title"
       >
         <img :src="`src/assets/icons/${menu.icon}.svg`" alt="menu.title" />
-        <span class="title-17">{{ menu.title }}</span>
+        <span class="title-13 menu-item-title">{{ menu.title }}</span>
       </div>
     </div>
   </div>
@@ -108,9 +108,12 @@ onMounted(() => {
   .menu-item {
     display: flex;
     cursor: pointer;
-    padding: 16px 16px;
+    padding: 16px 18px;
     width: 180px;
     gap: 10px;
+    &-title {
+      font-size: 14px;
+    }
     &:hover {
       background-color: #f3f3f1;
       border-radius: 8px;

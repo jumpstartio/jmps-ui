@@ -48,6 +48,7 @@ export default {
     const route = useRoute();
     const router = useRouter();
     const renderDashboardComponents = ref(false);
+    const renderCallComponents = ref(false);
     const renderUpcomingBookingsComponents = ref(false);
     const renderPaymentComponents = ref(false);
     const renderReviewComponents = ref(false);
@@ -68,6 +69,7 @@ export default {
           renderUpcomingBookingsComponents.value = false;
           renderSettingsComponents.value = false;
           renderPaymentComponents.value = false;
+          renderCallComponents.value = false;
           renderDashboardComponents.value = true;
         } else if (route.query.navigate === "bookings") {
           renderProfileComponents.value = false;
@@ -75,6 +77,7 @@ export default {
           renderDashboardComponents.value = false;
           renderPaymentComponents.value = false;
           renderSettingsComponents.value = false;
+          renderCallComponents.value = false;
           renderUpcomingBookingsComponents.value = true;
         } else if (route.query.navigate === "payments") {
           renderProfileComponents.value = false;
