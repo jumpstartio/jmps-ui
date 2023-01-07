@@ -61,6 +61,10 @@ export const useAuthStore = defineStore({
         })
         .catch((error) => {
           console.error(error);
+          if (error.response.data.message === "invalid or expired jwt") {
+            storage.remove("access_token");
+            window.location.href = "/authenticate/login";
+          }
         });
     },
     async loginWithGoogle({ commit, state }, { requestBody, success }) {

@@ -54,7 +54,7 @@
 <script>
 import { ref } from "vue";
 import Tooltip from "@/components/ui/Tooltip.vue";
-import verifiedIcon from '@/assets/icons/icon-verified.svg'
+import verifiedIcon from "@/assets/icons/icon-verified.svg";
 export default {
   name: "ProfileCard",
   components: {
