@@ -98,7 +98,7 @@ const sendFeedback = () => {
           </div>
         </template>
       </dropdown-menu>
-      <logged-in-user-drop-down v-if="userSignedIn" />
+      <LoggedInUserDropDown v-if="userSignedIn" />
     </div>
   </div>
 </template>
